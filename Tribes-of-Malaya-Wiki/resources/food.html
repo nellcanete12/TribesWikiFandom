@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Food | Tribes of Malaya Wiki</title>
+<link href="https://fonts.googleapis.com/css2?family=Linux+Libertine+O:ital,wght@0,400;0,700;1,400&family=Noto+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="../wiki.html" class="wiki-wordmark">
+      <div class="wordmark-icon">T</div>
+      <div class="wordmark-text">Tribes of Malaya<div class="wordmark-sub">Official Wiki</div></div>
+    </a>
+    <div class="header-search">
+      <input type="text" id="wiki-search" placeholder="Search items, tribes, buildings...">
+      <div class="header-search-icon">🔍</div>
+      <div id="search-results"></div>
+    </div>
+    <div class="header-links">
+      <a href="../wiki.html" class="header-link">Home</a>
+      <a href="https://s1.tribesofmalaya.com/" class="header-link play-btn">PLAY NOW</a>
+    </div>
+  </div>
+</header>
+
+<div class="wiki-layout">
+  <aside class="wiki-sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Navigation</div>
+      <nav class="sidebar-nav">
+        <a href="../wiki.html">Main Page</a>
+        <a href="../tribes/index.html">Tribes</a>
+        <a href="../items/index.html">Items</a>
+        <a href="../buildings/index.html">Buildings</a>
+        <a href="index.html" class="active">Resources</a>
+      </nav>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Resources</div>
+      <nav class="sidebar-nav">
+        <a href="food.html" class="active">Food</a>
+        <a href="wood.html">Wood</a>
+        <a href="minerals.html">Minerals</a>
+      </nav>
+    </div>
+  </aside>
+
+  <main class="wiki-main">
+    <div class="page-title-bar">
+      <h1 class="page-title">Food</h1>
+      <div class="page-subtitle">Base Resource</div>
+    </div>
+
+    <div class="item-infobox">
+      <div class="item-infobox-header">
+        <div class="item-infobox-title">Food</div>
+      </div>
+      <div class="item-infobox-image"><img src="https://images.tribesofmalaya.com/items/food-v5-x32.png" alt="Food" style="width: 100%; max-width: 150px; height: auto; display: block; margin: 0 auto;"></div>
+      <div class="item-infobox-section">Resource Info</div>
+      <table class="item-infobox-table">
+        <tr><th>Type</th><td>Base Resource</td></tr>
+        <tr><th>Production Building</th><td><a href="../buildings/farmers-tent.html" style="color: var(--wiki-link); text-decoration: none; cursor: pointer;">Farmer's Tent</a></td></tr>
+        <tr><th>Rarity</th><td>Essential</td></tr>
+      </table>
+      <div class="item-infobox-section">Production Stats</div>
+      <table class="item-infobox-table">
+        <tr><th>Max Workers</th><td>72</td></tr>
+        <tr><th>Worker Rate (WM)</th><td>0.25</td></tr>
+        <tr><th>Production Tick</th><td>5 minutes (300 seconds)</td></tr>
+      </table>
+    </div>
+
+    <div class="wiki-section">
+      <h2 class="wiki-h2">Description</h2>
+      <p class="wiki-p">Food is the lifeblood of your settlement. Every action in Tribes of Malaya requires food as a resource — from training warriors to crafting equipment. Without a steady food production, your city will grind to a halt. Food production is the foundation upon which all other activities are built.</p>
+    </div>
+
+    <div class="wiki-section">
+      <h2 class="wiki-h2">How to Get Food</h2>
+      <div class="wiki-notice notice-tip" style="margin-bottom: 20px; padding: 15px; background: rgba(200,168,75,0.05); border-left: 4px solid var(--wiki-gold); font-size: 14px;">
+        Build and upgrade the <a href="../buildings/farmers-tent.html" style="color: var(--wiki-link); font-weight: 600;">Farmer's Tent</a> to produce food. Assign workers to increase production rate.
+      </div>
+      <p class="wiki-p">Food is produced by the <a href="../buildings/farmers-tent.html" style="color: var(--wiki-link); text-decoration: none;">Farmer's Tent</a> building. To maximize food production:</p>
+      <div style="margin: 20px 0; padding: 15px; background: var(--wiki-surface); border-left: 4px solid var(--wiki-accent1);">
+        <div style="margin-bottom: 12px;"><strong>1. Build multiple Farmer's Tents</strong> — More buildings = more total production</div>
+        <div style="margin-bottom: 12px;"><strong>2. Upgrade them</strong> — Higher level buildings produce more food per tick</div>
+        <div style="margin-bottom: 12px;"><strong>3. Assign workers</strong> — Up to 72 workers can be assigned to Farmer's Tents. Each worker produces at a rate of 0.25 food per tick</div>
+        <div><strong>4. Calculate your needs</strong> — With 5-minute production ticks, plan your production based on your settlement's consumption</div>
+      </div>
+    </div>
+
+    <div class="wiki-section">
+      <h2 class="wiki-h2">Usage</h2>
+      <p class="wiki-p">Food is used for virtually everything in Tribes of Malaya:</p>
+      <div style="margin: 20px 0; padding: 15px; background: var(--wiki-surface); border-radius: 4px;">
+        <div style="margin-bottom: 8px;">📋 <strong>Training Warriors</strong> — Every unit requires food to train</div>
+        <div style="margin-bottom: 8px;">🏗️ <strong>Constructing Buildings</strong> — Settlement growth requires food investment</div>
+        <div style="margin-bottom: 8px;">⚒️ <strong>Crafting Items</strong> — Most recipes require food as an ingredient</div>
+        <div style="margin-bottom: 8px;">🏛️ <strong>Research & Upgrades</strong> — Improving your settlement consumes food</div>
+        <div>🛡️ <strong>Supporting Troops</strong> — Maintaining your army requires constant food supply</div>
+      </div>
+    </div>
+
+    <div class="wiki-section">
+      <h2 class="wiki-h2">Strategic Tips</h2>
+      <div style="margin: 20px 0; padding: 15px; background: rgba(76,175,80,0.08); border-left: 4px solid #4CAF50;">
+        <p style="margin: 0;"><strong>💡 Pro Tip:</strong> Food is the foundation of everything. Prioritize food production early in the game. A shortage of food will bottleneck all your other activities. Always maintain extra food storage to avoid production losses.</p>
+      </div>
+    </div>
+
+    <div class="wiki-section">
+      <h2 class="wiki-h2">Related Resources</h2>
+      <div style="display: flex; gap: 15px; margin-top: 15px;">
+        <a href="wood.html" style="flex: 1; padding: 15px; background: var(--wiki-surface); border: 1px solid var(--wiki-border); text-decoration: none; color: inherit; border-radius: 4px; transition: all 0.2s;">
+          <div style="font-size: 24px; margin-bottom: 8px;">🪵</div>
+          <div style="font-weight: 600; margin-bottom: 4px;">Wood</div>
+          <div style="font-size: 13px; color: var(--wiki-text2);">Essential for construction and crafting</div>
+        </a>
+        <a href="minerals.html" style="flex: 1; padding: 15px; background: var(--wiki-surface); border: 1px solid var(--wiki-border); text-decoration: none; color: inherit; border-radius: 4px; transition: all 0.2s;">
+          <div style="font-size: 24px; margin-bottom: 8px;">⛏️</div>
+          <div style="font-weight: 600; margin-bottom: 4px;">Minerals</div>
+          <div style="font-size: 13px; color: var(--wiki-text2);">Extracted from the earth by miners</div>
+        </a>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="../js/search.js"></script>
+</body>
+</html>

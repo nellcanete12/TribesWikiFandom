@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resources | Tribes of Malaya Wiki</title>
+<link href="https://fonts.googleapis.com/css2?family=Linux+Libertine+O:ital,wght@0,400;0,700;1,400&family=Noto+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="../wiki.html" class="wiki-wordmark">
+      <div class="wordmark-icon">T</div>
+      <div class="wordmark-text">Tribes of Malaya<div class="wordmark-sub">Official Wiki</div></div>
+    </a>
+    <div class="header-search">
+      <input type="text" id="wiki-search" placeholder="Search items, tribes, buildings...">
+      <div class="header-search-icon">🔍</div>
+      <div id="search-results"></div>
+    </div>
+    <div class="header-links">
+      <a href="../wiki.html" class="header-link">Home</a>
+      <a href="https://s1.tribesofmalaya.com/" class="header-link play-btn">PLAY NOW</a>
+    </div>
+  </div>
+</header>
+
+<div class="wiki-layout">
+  <aside class="wiki-sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Navigation</div>
+      <nav class="sidebar-nav">
+        <a href="../wiki.html">Main Page</a>
+        <a href="../tribes/index.html">Tribes</a>
+        <a href="../items/index.html">Items</a>
+        <a href="../buildings/index.html">Buildings</a>
+        <a href="index.html" class="active">Resources</a>
+      </nav>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Resources</div>
+      <nav class="sidebar-nav">
+        <a href="food.html">Food</a>
+        <a href="wood.html">Wood</a>
+        <a href="minerals.html">Minerals</a>
+      </nav>
+    </div>
+  </aside>
+
+  <main class="wiki-main">
+    <div class="page-banner">
+      <div class="page-banner-title">Base Resources</div>
+      <p class="page-banner-desc">The three foundation resources that fuel your entire economy. Every crafted item and settlement upgrade traces back to these raw materials.</p>
+    </div>
+
+    <div class="wiki-section">
+      <h2 class="wiki-h2">Overview</h2>
+      <div class="wiki-notice notice-tip" style="margin-bottom: 20px; padding: 15px; background: rgba(200,168,75,0.05); border-left: 4px solid var(--wiki-gold); font-size: 14px;">
+        <strong>Production Tick:</strong> All resources are produced every <strong>5 minutes</strong> (300 seconds). Each assigned worker generates resources per tick based on their building type and level.
+      </div>
+      <p class="wiki-p">Tribes of Malaya has three fundamental base resources that are essential to your success. Your economy revolves around producing, managing, and utilizing these three resources efficiently. Understanding their production rates, sources, and uses is key to progressing through the game.</p>
+    </div>
+
+    <div class="wiki-section">
+      <h2 class="wiki-h2">All Resources</h2>
+      <div class="tribe-cards" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px;">
+        <a href="food.html" class="tribe-card tc-resources" style="text-decoration:none">
+          <div class="tribe-card-banner" style="background: linear-gradient(135deg, #8B7355 0%, #A0826D 100%); height: 100px; display: flex; align-items: center; justify-content: center;">
+            <img src="https://images.tribesofmalaya.com/items/food-v5-x32.png" alt="Food" style="max-width: 80%; max-height: 80%; object-fit: contain;">
+          </div>
+          <div class="tribe-card-body">
+            <div class="tribe-card-name">Food</div>
+            <div class="tribe-card-desc">The lifeblood of your settlement. Building: <a href="../buildings/farmers-tent.html" style="color: inherit; text-decoration: underline;">Farmer's Tent</a> | Max Workers: 72 | WM Rate: 0.25</div>
+          </div>
+        </a>
+        <a href="wood.html" class="tribe-card tc-resources" style="text-decoration:none">
+          <div class="tribe-card-banner" style="background: linear-gradient(135deg, #6B5344 0%, #7D6B57 100%); height: 100px; display: flex; align-items: center; justify-content: center;">
+            <img src="https://images.tribesofmalaya.com/items/wood-v2-x32.png" alt="Wood" style="max-width: 80%; max-height: 80%; object-fit: contain;">
+          </div>
+          <div class="tribe-card-body">
+            <div class="tribe-card-name">Wood</div>
+            <div class="tribe-card-desc">Essential for construction and crafting. Building: <a href="../buildings/woodcutters-tent.html" style="color: inherit; text-decoration: underline;">Woodcutter's Tent</a> | Max Workers: 30 | WM Rate: 0.3125</div>
+          </div>
+        </a>
+        <a href="minerals.html" class="tribe-card tc-resources" style="text-decoration:none">
+          <div class="tribe-card-banner" style="background: linear-gradient(135deg, #4A4A4A 0%, #5E5E5E 100%); height: 100px; display: flex; align-items: center; justify-content: center;">
+            <img src="https://images.tribesofmalaya.com/items/stone-v1-x32.png" alt="Minerals" style="max-width: 80%; max-height: 80%; object-fit: contain;">
+          </div>
+          <div class="tribe-card-body">
+            <div class="tribe-card-name">Minerals</div>
+            <div class="tribe-card-desc">Extracted from the earth by miners. Building: <a href="../buildings/miners-tent.html" style="color: inherit; text-decoration: underline;">Miner's Tent</a> | Max Workers: 30 | WM Rate: 0.3125</div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="wiki-section">
+      <h2 class="wiki-h2">Production System</h2>
+      <div style="margin: 20px 0; padding: 15px; background: var(--wiki-surface); border-radius: 4px;">
+        <div style="margin-bottom: 16px;">
+          <strong style="display: block; margin-bottom: 8px; color: var(--wiki-text);">How Resources Are Produced</strong>
+          <div style="font-size: 14px; color: var(--wiki-text2); line-height: 1.6;">Each resource is produced by a specific production building. You can have multiple buildings of the same type to increase total production. Higher level buildings produce more resources per tick, and assigning more workers to a building increases its total output.</div>
+        </div>
+        <div style="margin-bottom: 16px;">
+          <strong style="display: block; margin-bottom: 8px; color: var(--wiki-text);">Worker Assignment</strong>
+          <div style="font-size: 14px; color: var(--wiki-text2); line-height: 1.6;">Each production building has a maximum number of workers it can support. Workers in Food production buildings have different rates than those in Wood or Mineral buildings. Plan your worker distribution carefully.</div>
+        </div>
+        <div>
+          <strong style="display: block; margin-bottom: 8px; color: var(--wiki-text);">Storage & Overflow</strong>
+          <div style="font-size: 14px; color: var(--wiki-text2); line-height: 1.6;">Resources are produced every 5 minutes. If your storage is full, you'll lose the resources that tick — a permanent waste. Always maintain sufficient storage capacity for your production rate.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="wiki-section">
+      <h2 class="wiki-h2">Strategic Progression</h2>
+      <div style="margin: 20px 0;">
+        <div style="margin-bottom: 20px; padding: 15px; background: rgba(200,168,75,0.08); border-left: 4px solid var(--wiki-gold);">
+          <strong style="display: block; margin-bottom: 8px;">Early Game</strong>
+          <div style="font-size: 14px; color: var(--wiki-text2);">Focus on establishing steady food and wood production. These two resources will support your initial growth and building construction.</div>
+        </div>
+        <div style="margin-bottom: 20px; padding: 15px; background: rgba(156,39,176,0.08); border-left: 4px solid #9C27B0;">
+          <strong style="display: block; margin-bottom: 8px;">Mid Game</strong>
+          <div style="font-size: 14px; color: var(--wiki-text2);">Unlock mineral production by building the Miner's Tent. Minerals enable access to iron, steel, and advanced crafting recipes. This is a critical bottleneck in the game.</div>
+        </div>
+        <div style="padding: 15px; background: rgba(76,175,80,0.08); border-left: 4px solid #4CAF50;">
+          <strong style="display: block; margin-bottom: 8px;">Late Game</strong>
+          <div style="font-size: 14px; color: var(--wiki-text2);">Optimize production rates and worker distribution. Advanced progression requires massive amounts of all three resources. Efficient production chains become essential.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="wiki-section">
+      <h2 class="wiki-h2">Key Tips</h2>
+      <div style="margin: 20px 0; padding: 15px; background: rgba(200,168,75,0.08); border-left: 4px solid var(--wiki-gold);">
+        <div style="margin-bottom: 12px;"><strong>💡 Tip 1:</strong> Food production is the foundation of everything. Start with multiple Farmer's Tents and upgrade them steadily.</div>
+        <div style="margin-bottom: 12px;"><strong>💡 Tip 2:</strong> Wood enters almost every recipe in the game. Establishing reliable wood production early prevents many bottlenecks.</div>
+        <div style="margin-bottom: 12px;"><strong>💡 Tip 3:</strong> Minerals are a mid-game bottleneck. Don't overlook them once you unlock mining — they're critical for advancement.</div>
+        <div><strong>💡 Tip 4:</strong> Never let your storage fill up — lost ticks are permanently lost production. Always build storage before you overflow.</div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="../js/search.js"></script>
+</body>
+</html>

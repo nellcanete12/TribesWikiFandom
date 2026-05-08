@@ -1,0 +1,1030 @@
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+
+:root{
+  --wiki-bg:#0e1117;
+  --wiki-surface:#141920;
+  --wiki-surface2:#1a2230;
+  --wiki-border:#2a3545;
+  --wiki-border2:#3a4a5e;
+  --wiki-text:#d4c9b0;
+  --wiki-text2:#9a8f7a;
+  --wiki-text3:#6a6050;
+  --wiki-link:#7bb8d4;
+  --wiki-link-hover:#a8d4e8;
+  --wiki-gold:#c8a84b;
+  --wiki-gold2:#8a6f28;
+  --wiki-teal:#3ecba5;
+  --wiki-teal2:#1e7a62;
+  --wiki-purple:#9b7fe8;
+  --wiki-purple2:#5a48a0;
+  --wiki-coral:#e8614b;
+  --wiki-coral2:#8a3628;
+  --wiki-blue:#4ba8e8;
+  --wiki-blue2:#2860a0;
+  --wiki-header-bg:linear-gradient(135deg,#0a1520 0%,#0f1e2e 50%,#0a1520 100%);
+  --wiki-accent:#c8a84b;
+  --wiki-nav-bg:#0d1520;
+  --sidebar-w:260px;
+  --content-max:900px;
+}
+
+body{
+  background:var(--wiki-bg);
+  color:var(--wiki-text);
+  font-family:'Noto Sans',sans-serif;
+  font-size:15px;
+  line-height:1.65;
+  min-height:100vh;
+}
+
+/* ── CURSOR ── */
+body{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Crect x='0' y='0' width='4' height='4' fill='%23e8b84b'/%3E%3Crect x='4' y='4' width='4' height='4' fill='%23e8b84b'/%3E%3Crect x='8' y='8' width='4' height='4' fill='%23e8b84b'/%3E%3Crect x='12' y='12' width='4' height='4' fill='%23e8b84b'/%3E%3C/svg%3E"),crosshair}
+
+/* ── SITENOTICE ── */
+.sitenotice{
+  background:#1a1500;
+  border-bottom:2px solid var(--wiki-gold2);
+  padding:8px 24px;
+  text-align:center;
+  font-size:13px;
+  color:var(--wiki-gold);
+  letter-spacing:0.03em;
+}
+
+/* ── HEADER ── */
+header{
+  background:var(--wiki-nav-bg);
+  border-bottom:3px solid var(--wiki-gold2);
+  position:sticky;
+  top:0;
+  z-index:200;
+}
+.header-inner{
+  max-width:1280px;
+  margin:0 auto;
+  padding:0 20px;
+  display:flex;
+  align-items:center;
+  gap:20px;
+  min-height:56px;
+}
+.wiki-wordmark{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  text-decoration:none;
+  flex-shrink:0;
+}
+.wordmark-icon{
+  width:40px;height:40px;
+  background:var(--wiki-gold);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Linux Libertine O',serif;
+  font-size:22px;font-weight:700;
+  color:#0a0800;
+  clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);
+}
+.wordmark-text{
+  font-family:'Linux Libertine O',serif;
+  font-size:20px;
+  font-weight:700;
+  color:var(--wiki-gold);
+  line-height:1.1;
+}
+.wordmark-sub{
+  font-family:'Noto Sans',sans-serif;
+  font-size:11px;
+  color:var(--wiki-text2);
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+}
+
+.header-search{
+  flex:1;
+  max-width:420px;
+  position:relative;
+}
+.header-search input{
+  width:100%;
+  background:var(--wiki-surface);
+  border:1px solid var(--wiki-border);
+  color:var(--wiki-text);
+  font-family:'Noto Sans',sans-serif;
+  font-size:14px;
+  padding:8px 36px 8px 14px;
+  outline:none;
+  border-radius:2px;
+  transition:border-color 0.2s;
+}
+.header-search input:focus{border-color:var(--wiki-gold2)}
+.header-search input::placeholder{color:var(--wiki-text3)}
+.header-search-icon{
+  position:absolute;right:10px;top:50%;transform:translateY(-50%);
+  color:var(--wiki-text3);font-size:15px;
+}
+
+.header-links{
+  display:flex;gap:4px;margin-left:auto;
+}
+.header-link{
+  color:var(--wiki-link);
+  font-size:13px;
+  text-decoration:none;
+  padding:6px 10px;
+  border-radius:2px;
+  transition:background 0.15s,color 0.15s;
+  white-space:nowrap;
+}
+.header-link:hover{background:var(--wiki-surface2);color:var(--wiki-link-hover)}
+.header-link.play-btn{
+  background:var(--wiki-gold);
+  color:#0a0800;
+  font-weight:700;
+  font-size:12px;
+  letter-spacing:0.05em;
+}
+.header-link.play-btn:hover{background:#dab84f;color:#0a0800}
+
+/* ── TOP NAV ── */
+.topnav{
+  background:var(--wiki-surface);
+  border-bottom:1px solid var(--wiki-border);
+}
+.topnav-inner{
+  max-width:1280px;
+  margin:0 auto;
+  padding:0 20px;
+  display:flex;
+  gap:0;
+  overflow-x:auto;
+}
+.topnav-link{
+  color:var(--wiki-text2);
+  text-decoration:none;
+  font-size:13.5px;
+  padding:10px 16px;
+  border-bottom:3px solid transparent;
+  white-space:nowrap;
+  transition:color 0.15s,border-color 0.15s;
+  display:flex;align-items:center;gap:6px;
+}
+.topnav-link:hover{color:var(--wiki-text);border-color:var(--wiki-border2)}
+.topnav-link.active{color:var(--wiki-gold);border-color:var(--wiki-gold)}
+
+/* ── LAYOUT ── */
+.wiki-layout{
+  max-width:1280px;
+  margin:0 auto;
+  padding:0 20px;
+  display:grid;
+  grid-template-columns:var(--sidebar-w) 1fr 220px;
+  gap:0;
+  align-items:start;
+  min-height:calc(100vh - 120px);
+}
+
+/* ── LEFT SIDEBAR ── */
+.wiki-sidebar{
+  border-right:1px solid var(--wiki-border);
+  padding:20px 16px 40px;
+  position:sticky;
+  top:120px;
+  max-height:calc(100vh - 130px);
+  overflow-y:auto;
+}
+.wiki-sidebar::-webkit-scrollbar{width:4px}
+.wiki-sidebar::-webkit-scrollbar-track{background:transparent}
+.wiki-sidebar::-webkit-scrollbar-thumb{background:var(--wiki-border);border-radius:2px}
+
+.sidebar-section{margin-bottom:20px}
+.sidebar-section-title{
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  color:var(--wiki-text3);
+  padding:6px 0 6px 8px;
+  border-left:3px solid var(--wiki-border2);
+  margin-bottom:6px;
+}
+.sidebar-nav a{
+  display:block;
+  color:var(--wiki-link);
+  text-decoration:none;
+  font-size:13.5px;
+  padding:5px 8px;
+  border-radius:2px;
+  transition:background 0.12s,color 0.12s;
+}
+.sidebar-nav a:hover{background:var(--wiki-surface2);color:var(--wiki-link-hover)}
+.sidebar-nav a.active{background:var(--wiki-surface2);color:var(--wiki-gold);font-weight:600}
+.sidebar-nav a.sub{padding-left:20px;font-size:13px;color:var(--wiki-text2)}
+.sidebar-nav a.sub:hover{color:var(--wiki-link-hover)}
+
+/* ── MAIN CONTENT ── */
+.wiki-main{
+  padding:28px 32px 60px;
+  min-width:0;
+}
+
+/* ── RIGHT TOC ── */
+.wiki-toc{
+  padding:20px 0 20px 20px;
+  position:sticky;
+  top:120px;
+  max-height:calc(100vh - 130px);
+  overflow-y:auto;
+}
+.toc-title{
+  font-size:13px;
+  font-weight:700;
+  color:var(--wiki-text2);
+  letter-spacing:0.06em;
+  text-transform:uppercase;
+  margin-bottom:10px;
+  padding-bottom:8px;
+  border-bottom:1px solid var(--wiki-border);
+}
+.toc-list{list-style:none}
+.toc-list li{margin-bottom:2px}
+.toc-list a{
+  font-size:12.5px;
+  color:var(--wiki-text2);
+  text-decoration:none;
+  display:block;
+  padding:3px 6px;
+  border-radius:2px;
+  transition:color 0.12s,background 0.12s;
+  border-left:2px solid transparent;
+}
+.toc-list a:hover{color:var(--wiki-link-hover);background:var(--wiki-surface);border-left-color:var(--wiki-link)}
+.toc-list a.active{color:var(--wiki-gold);border-left-color:var(--wiki-gold)}
+.toc-list a.h3{padding-left:14px;font-size:12px;color:var(--wiki-text3)}
+
+/* ── PAGE TITLE ── */
+.page-title-bar{
+  border-bottom:1px solid var(--wiki-border);
+  margin-bottom:24px;
+  padding-bottom:16px;
+}
+.page-title{
+  font-family:'Linux Libertine O',serif;
+  font-size:32px;
+  font-weight:700;
+  color:var(--wiki-text);
+  line-height:1.2;
+  margin-bottom:4px;
+}
+.page-subtitle{
+  font-size:14px;
+  color:var(--wiki-text2);
+  font-style:italic;
+}
+.page-tabs{
+  display:flex;gap:0;margin-top:12px;
+}
+.page-tab{
+  font-size:13px;
+  color:var(--wiki-text2);
+  padding:6px 16px;
+  border:1px solid var(--wiki-border);
+  border-bottom:none;
+  text-decoration:none;
+  transition:background 0.12s,color 0.12s;
+  cursor:pointer;
+}
+.page-tab.active{background:var(--wiki-surface2);color:var(--wiki-gold);border-color:var(--wiki-gold2)}
+.page-tab:hover:not(.active){background:var(--wiki-surface);color:var(--wiki-text)}
+
+/* ── HERO BANNER ── */
+.page-banner{
+  background:linear-gradient(160deg,#0a1a0a 0%,#0d1a25 40%,#0a1520 100%);
+  border:1px solid var(--wiki-border);
+  border-left:4px solid var(--wiki-gold);
+  padding:28px 28px 24px;
+  margin-bottom:32px;
+  position:relative;
+  overflow:hidden;
+}
+.page-banner::before{
+  content:'';
+  position:absolute;
+  top:0;right:0;
+  width:200px;height:100%;
+  background:repeating-linear-gradient(45deg,transparent,transparent 8px,rgba(200,168,75,0.03) 8px,rgba(200,168,75,0.03) 9px);
+}
+.page-banner-title{
+  font-family:'Linux Libertine O',serif;
+  font-size:26px;
+  color:var(--wiki-gold);
+  margin-bottom:10px;
+}
+.page-banner-desc{
+  font-size:15px;
+  color:var(--wiki-text2);
+  max-width:600px;
+  line-height:1.7;
+  margin-bottom:16px;
+}
+.banner-tags{display:flex;gap:8px;flex-wrap:wrap}
+.banner-tag{
+  font-size:12px;
+  padding:4px 12px;
+  border:1px solid;
+  border-radius:2px;
+  font-weight:600;
+  letter-spacing:0.04em;
+}
+.tag-mmo{color:#7bb8d4;border-color:#2860a0;background:#042850}
+.tag-strategy{color:#3ecba5;border-color:#1e7a62;background:#041e14}
+.tag-philippines{color:#c8a84b;border-color:#8a6f28;background:#1a1000}
+
+/* ── WIKI SECTIONS ── */
+.wiki-section{margin-bottom:40px}
+.wiki-h2{
+  font-family:'Linux Libertine O',serif;
+  font-size:22px;
+  color:var(--wiki-text);
+  border-bottom:1px solid var(--wiki-border);
+  padding-bottom:6px;
+  margin-bottom:16px;
+  padding-top:8px;
+}
+.wiki-h3{
+  font-family:'Linux Libertine O',serif;
+  font-size:17px;
+  color:var(--wiki-text);
+  margin-bottom:10px;
+  margin-top:20px;
+  display:flex;align-items:center;gap:8px;
+}
+.wiki-h3::before{
+  content:'';
+  width:3px;height:16px;
+  background:var(--wiki-gold2);
+  flex-shrink:0;
+}
+.wiki-p{
+  font-size:15px;
+  color:var(--wiki-text);
+  line-height:1.7;
+  margin-bottom:14px;
+}
+.wiki-link{color:var(--wiki-link);text-decoration:none;border-bottom:1px solid transparent;transition:border-color 0.15s}
+.wiki-link:hover{border-color:var(--wiki-link-hover);color:var(--wiki-link-hover)}
+
+/* ── INFOBOX ── */
+.infobox{
+  float:right;
+  clear:right;
+  margin:0 0 20px 24px;
+  width:280px;
+  background:var(--wiki-surface);
+  border:1px solid var(--wiki-border2);
+  font-size:13.5px;
+}
+.infobox-title{
+  background:var(--wiki-gold);
+  color:#0a0800;
+  font-family:'Linux Libertine O',serif;
+  font-size:15px;
+  font-weight:700;
+  padding:8px 12px;
+  text-align:center;
+}
+.infobox-image{
+  width:100%;
+  height:140px;
+  background:linear-gradient(135deg,#0a1a20,#0d2030);
+  display:flex;align-items:center;justify-content:center;
+  font-size:60px;
+  border-bottom:1px solid var(--wiki-border);
+}
+.infobox-table{width:100%;border-collapse:collapse}
+.infobox-table tr{border-bottom:1px solid var(--wiki-border)}
+.infobox-table tr:last-child{border-bottom:none}
+.infobox-table th{
+  background:var(--wiki-surface2);
+  color:var(--wiki-text2);
+  font-size:12px;
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:0.06em;
+  padding:7px 12px;
+  white-space:nowrap;
+  width:40%;
+}
+.infobox-table td{
+  color:var(--wiki-text);
+  padding:7px 12px;
+}
+.infobox-note{
+  font-size:12px;
+  color:var(--wiki-text2);
+  padding:8px 12px;
+  font-style:italic;
+  background:var(--wiki-surface2);
+}
+
+/* ── TRIBE CARDS ── */
+.tribe-cards{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-bottom:20px;
+}
+.tribe-card{
+  background:var(--wiki-surface);
+  border:1px solid var(--wiki-border);
+  overflow:hidden;
+  transition:border-color 0.15s,transform 0.1s;
+  cursor:pointer;
+}
+.tribe-card:hover{transform:translateY(-2px)}
+.tribe-card-banner{
+  height:6px;
+}
+.tribe-card-body{padding:16px}
+.tribe-card-emoji{font-size:28px;margin-bottom:8px;display:block}
+.tribe-card-name{
+  font-family:'Linux Libertine O',serif;
+  font-size:17px;
+  font-weight:700;
+  margin-bottom:4px;
+}
+.tribe-card-role{
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:0.06em;
+  text-transform:uppercase;
+  margin-bottom:10px;
+}
+.tribe-card-desc{font-size:13px;color:var(--wiki-text2);line-height:1.6;margin-bottom:12px}
+.tribe-card-exclusive{
+  font-size:12px;
+  padding:5px 10px;
+  border-left:3px solid;
+  background:rgba(0,0,0,0.3);
+  line-height:1.5;
+}
+.tc-tausug{border-color:var(--wiki-purple2);background:#100c20}
+.tc-tausug:hover{border-color:var(--wiki-purple)}
+.tc-tausug .tribe-card-banner{background:var(--wiki-purple)}
+.tc-tausug .tribe-card-name{color:var(--wiki-purple)}
+.tc-tausug .tribe-card-role{color:var(--wiki-purple2)}
+.tc-tausug .tribe-card-exclusive{border-color:var(--wiki-purple);color:var(--wiki-purple)}
+.tc-sugbuanon{border-color:var(--wiki-teal2);background:#04140e}
+.tc-sugbuanon:hover{border-color:var(--wiki-teal)}
+.tc-sugbuanon .tribe-card-banner{background:var(--wiki-teal)}
+.tc-sugbuanon .tribe-card-name{color:var(--wiki-teal)}
+.tc-sugbuanon .tribe-card-role{color:var(--wiki-teal2)}
+.tc-sugbuanon .tribe-card-exclusive{border-color:var(--wiki-teal);color:var(--wiki-teal)}
+.tc-tagailog{border-color:var(--wiki-gold2);background:#160e00}
+.tc-tagailog:hover{border-color:var(--wiki-gold)}
+.tc-tagailog .tribe-card-banner{background:var(--wiki-gold)}
+.tc-tagailog .tribe-card-name{color:var(--wiki-gold)}
+.tc-tagailog .tribe-card-role{color:var(--wiki-gold2)}
+.tc-tagailog .tribe-card-exclusive{border-color:var(--wiki-gold);color:var(--wiki-gold)}
+
+/* ── CRAFTING TABLE ── */
+.craft-filters{
+  display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;align-items:center;
+}
+.filter-label{font-size:12px;color:var(--wiki-text2);margin-right:4px}
+.filter-btn{
+  font-size:12px;
+  padding:5px 12px;
+  border:1px solid var(--wiki-border2);
+  background:transparent;
+  color:var(--wiki-text2);
+  cursor:pointer;
+  border-radius:2px;
+  transition:all 0.12s;
+  font-family:'Noto Sans',sans-serif;
+}
+.filter-btn:hover{border-color:var(--wiki-gold2);color:var(--wiki-text)}
+.filter-btn.active{border-color:var(--wiki-gold);background:rgba(200,168,75,0.1);color:var(--wiki-gold)}
+
+.wiki-table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:14px;
+  background:var(--wiki-surface);
+  border:1px solid var(--wiki-border);
+}
+.wiki-table thead{
+  background:var(--wiki-surface2);
+  border-bottom:2px solid var(--wiki-gold2);
+}
+.wiki-table th{
+  color:var(--wiki-text2);
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:0.07em;
+  text-transform:uppercase;
+  padding:10px 14px;
+  text-align:left;
+  white-space:nowrap;
+}
+.wiki-table td{
+  padding:9px 14px;
+  border-bottom:1px solid var(--wiki-border);
+  color:var(--wiki-text);
+  vertical-align:middle;
+}
+.wiki-table tr:last-child td{border-bottom:none}
+.wiki-table tr:hover td{background:rgba(200,168,75,0.03)}
+.wiki-table .item-main{font-size:14px;font-weight:600;color:var(--wiki-text)}
+.wiki-table .item-cat{font-size:11px;color:var(--wiki-text3);margin-top:2px}
+.yield-num{color:var(--wiki-gold);font-weight:700}
+.time-num{color:var(--wiki-teal);font-family:monospace;font-size:13px}
+.tribe-pill{
+  display:inline-block;
+  font-size:11px;
+  font-weight:700;
+  padding:3px 8px;
+  border-radius:2px;
+  letter-spacing:0.05em;
+}
+.pill-all{background:#1a2230;border:1px solid #2a3545;color:#6a8090}
+.pill-tausug{background:#1a0830;border:1px solid #5a48a0;color:#9b7fe8}
+.pill-sugbuanon{background:#041c14;border:1px solid #1e7a62;color:#3ecba5}
+.pill-tagailog{background:#1a1000;border:1px solid #8a6f28;color:#c8a84b}
+
+/* ── RESOURCE BOXES ── */
+.resource-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-bottom:20px;
+}
+.resource-box{
+  background:var(--wiki-surface);
+  border:1px solid var(--wiki-border);
+  padding:20px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.resource-box::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;right:0;
+  height:3px;
+}
+.rb-food::before{background:var(--wiki-teal)}
+.rb-wood::before{background:#8B6914}
+.rb-mineral::before{background:var(--wiki-blue)}
+.resource-icon{font-size:32px;margin-bottom:8px;display:block}
+.resource-name{
+  font-family:'Linux Libertine O',serif;
+  font-size:16px;
+  font-weight:700;
+  margin-bottom:4px;
+}
+.resource-stat-row{
+  display:flex;
+  justify-content:space-between;
+  font-size:12px;
+  color:var(--wiki-text2);
+  margin-top:10px;
+  padding-top:10px;
+  border-top:1px solid var(--wiki-border);
+}
+.resource-stat-val{font-weight:700;font-size:14px}
+.stat-teal{color:var(--wiki-teal)}
+.stat-gold{color:var(--wiki-gold)}
+.stat-blue{color:var(--wiki-blue)}
+
+/* ── BUILDINGS GRID ── */
+.buildings-section-title{
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  color:var(--wiki-text2);
+  padding:10px 14px;
+  background:var(--wiki-surface2);
+  border:1px solid var(--wiki-border);
+  border-bottom:2px solid var(--wiki-border2);
+  margin:20px 0 0;
+}
+.buildings-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+  gap:8px;
+  margin-bottom:8px;
+}
+.building-card{
+  background:var(--wiki-surface);
+  border:1px solid var(--wiki-border);
+  padding:14px;
+  transition:border-color 0.15s;
+}
+.building-card:hover{border-color:var(--wiki-border2)}
+.building-cat-pill{
+  display:inline-block;
+  font-size:10px;font-weight:700;
+  letter-spacing:0.07em;text-transform:uppercase;
+  padding:2px 7px;border-radius:2px;
+  margin-bottom:8px;
+}
+.cat-housing{background:#042050;border:1px solid #2860a0;color:#4ba8e8}
+.cat-production{background:#041e14;border:1px solid #1e7a62;color:#3ecba5}
+.cat-military{background:#200808;border:1px solid #8a3628;color:#e8614b}
+.cat-crafting{background:#160e00;border:1px solid #8a6f28;color:#c8a84b}
+.cat-infra{background:#100c20;border:1px solid #5a48a0;color:#9b7fe8}
+.building-name{font-weight:600;font-size:14px;color:var(--wiki-text);margin-bottom:4px}
+.building-cost{font-size:12px;color:var(--wiki-text2);line-height:1.6}
+.building-max{font-size:11px;color:var(--wiki-text3);margin-top:4px;font-style:italic}
+
+/* ── BUILD ORDER ── */
+.build-list{display:flex;flex-direction:column;gap:6px;margin-bottom:20px}
+.build-item{
+  display:flex;gap:0;
+  background:var(--wiki-surface);
+  border:1px solid var(--wiki-border);
+  overflow:hidden;
+  transition:border-color 0.15s;
+}
+.build-item:hover{border-color:var(--wiki-border2)}
+.build-num{
+  width:52px;flex-shrink:0;
+  background:var(--wiki-gold);
+  color:#0a0800;
+  font-family:'Linux Libertine O',serif;
+  font-size:24px;
+  font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+}
+.build-content{padding:12px 16px}
+.build-title{
+  font-family:'Linux Libertine O',serif;
+  font-size:15px;
+  font-weight:700;
+  color:var(--wiki-text);
+  margin-bottom:3px;
+}
+.build-desc{font-size:13.5px;color:var(--wiki-text2);line-height:1.6}
+
+/* ── TIPS GRID ── */
+.tips-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;margin-bottom:20px;
+}
+.tip-item{
+  background:var(--wiki-surface);
+  border:1px solid var(--wiki-border);
+  border-left:3px solid var(--wiki-gold2);
+  padding:14px 16px;
+  transition:border-color 0.15s;
+}
+.tip-item:hover{border-left-color:var(--wiki-gold)}
+.tip-badge{
+  font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;
+  color:var(--wiki-gold2);margin-bottom:6px;
+}
+.tip-title{font-size:14px;font-weight:600;color:var(--wiki-text);margin-bottom:5px}
+.tip-body{font-size:13px;color:var(--wiki-text2);line-height:1.65}
+
+/* ── NOTICE BOXES ── */
+.wiki-notice{
+  padding:12px 16px;
+  border-left:4px solid;
+  margin-bottom:16px;
+  font-size:13.5px;
+  line-height:1.65;
+}
+.notice-info{border-color:var(--wiki-blue);background:#031020;color:#7ab8e0}
+.notice-tip{border-color:var(--wiki-teal);background:#021410;color:#5ecba5}
+.notice-warning{border-color:#c8902b;background:#140c00;color:#c8902b}
+.notice-exclusive{border-color:var(--wiki-purple);background:#0c0820;color:#9b7fe8}
+.notice strong{font-weight:700}
+
+/* ── CRAFTING CHAIN ── */
+.chain-visual{
+  display:flex;
+  align-items:center;
+  gap:0;
+  flex-wrap:wrap;
+  margin:12px 0 16px;
+  overflow-x:auto;
+}
+.chain-node{
+  background:var(--wiki-surface2);
+  border:1px solid var(--wiki-border2);
+  padding:8px 14px;
+  font-size:13px;
+  white-space:nowrap;
+  text-align:center;
+}
+.chain-node-label{font-size:11px;color:var(--wiki-text2);margin-bottom:2px}
+.chain-node-value{font-weight:700;color:var(--wiki-text)}
+.chain-arrow{
+  color:var(--wiki-gold2);
+  font-size:18px;
+  padding:0 6px;
+  flex-shrink:0;
+}
+.chain-node.cn-tausug{border-color:var(--wiki-purple2);background:#0e0820;color:var(--wiki-purple)}
+.chain-node.cn-gold{border-color:var(--wiki-gold2);background:#160e00;color:var(--wiki-gold)}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--wiki-surface);
+  border-top:3px solid var(--wiki-border);
+  padding:32px 20px;
+  margin-top:40px;
+  text-align:center;
+}
+.footer-inner{max-width:1280px;margin:0 auto}
+.footer-logo{
+  font-family:'Linux Libertine O',serif;
+  font-size:22px;
+  color:var(--wiki-gold);
+  margin-bottom:8px;
+}
+.footer-text{font-size:13px;color:var(--wiki-text3);margin-bottom:16px}
+.footer-links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.footer-links a{color:var(--wiki-link);font-size:13px;text-decoration:none}
+.footer-links a:hover{color:var(--wiki-link-hover)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  .wiki-layout{grid-template-columns:var(--sidebar-w) 1fr;grid-template-rows:auto}
+  .wiki-toc{display:none}
+  .tribe-cards{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  .wiki-layout{grid-template-columns:1fr;padding:0 12px}
+  .wiki-sidebar{display:none}
+  .wiki-main{padding:20px 0 40px}
+  .tribe-cards{grid-template-columns:1fr}
+  .resource-grid{grid-template-columns:1fr}
+  .tips-grid{grid-template-columns:1fr}
+  .infobox{float:none;width:100%;margin:0 0 20px}
+}
+
+/* ── PAGE SECTIONS VISIBILITY ── */
+.page-section{display:none}
+.page-section.active{display:block}
+
+/* ── ANIMATED HIGHLIGHT ── */
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.page-section.active{animation:fadeIn 0.3s ease}
+
+/* ── SEARCH HIGHLIGHT ── */
+.hidden-row{display:none}
+
+/* ── BLOX FRUIT STYLE INFOBOX ── */
+.item-infobox {
+  float: right;
+  width: 300px;
+  background: var(--wiki-surface);
+  border: 1px solid var(--wiki-border);
+  margin-left: 20px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+.item-infobox-header {
+  background: var(--wiki-header-bg);
+  padding: 12px;
+  text-align: center;
+  border-bottom: 2px solid var(--wiki-gold2);
+}
+.item-infobox-title {
+  font-family: 'Linux Libertine O', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--wiki-gold);
+}
+.item-infobox-image {
+  padding: 20px;
+  text-align: center;
+  background: rgba(255,255,255,0.02);
+  font-size: 64px;
+}
+.item-infobox-section {
+  padding: 8px 12px;
+  background: var(--wiki-surface2);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--wiki-text3);
+  border-top: 1px solid var(--wiki-border);
+  border-bottom: 1px solid var(--wiki-border);
+}
+.item-infobox-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.item-infobox-table th {
+  text-align: left;
+  padding: 8px 12px;
+  font-size: 13px;
+  color: var(--wiki-text2);
+  width: 40%;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.item-infobox-table td {
+  padding: 8px 12px;
+  font-size: 13px;
+  color: var(--wiki-text);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.item-infobox-table tr:last-child th,
+.item-infobox-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* ── SEARCH BAR STYLES ── */
+#search-results {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--wiki-surface2);
+  border: 1px solid var(--wiki-border2);
+  border-top: none;
+  z-index: 1000;
+  max-height: 300px;
+  overflow-y: auto;
+  display: none;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+.search-result-item {
+  padding: 10px 15px;
+  cursor: pointer;
+  border-bottom: 1px solid var(--wiki-border);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--wiki-text);
+}
+.search-result-item:hover {
+  background: var(--wiki-surface);
+}
+.search-result-icon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--wiki-surface);
+  border-radius: 2px;
+  font-size: 14px;
+}
+.wiki-footer {
+  background: var(--wiki-surface, #1a1a1f);
+  border-top: 1px solid var(--wiki-border, rgba(200,168,75,0.15));
+  margin-top: 60px;
+  padding: 48px 0 24px;
+  font-family: 'Noto Sans', sans-serif;
+}
+
+.wiki-footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.wiki-footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.wiki-footer-brand .footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+  text-decoration: none;
+}
+
+.footer-logo-icon {
+  width: 36px;
+  height: 36px;
+  background: var(--wiki-gold, #c8a84b);
+  color: #1a1a1f;
+  font-family: 'Linux Libertine O', Georgia, serif;
+  font-size: 20px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.footer-logo-text {
+  font-family: 'Linux Libertine O', Georgia, serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--wiki-gold, #c8a84b);
+  line-height: 1.2;
+}
+
+.footer-logo-sub {
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--wiki-text2, #8a8a9a);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.wiki-footer-brand p {
+  font-size: 13px;
+  color: var(--wiki-text2, #8a8a9a);
+  line-height: 1.65;
+  max-width: 280px;
+  margin: 0 0 18px;
+}
+
+.footer-play-btn {
+  display: inline-block;
+  padding: 8px 20px;
+  background: var(--wiki-gold, #c8a84b);
+  color: #1a1a1f;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.footer-play-btn:hover { opacity: 0.85; }
+
+.wiki-footer-col h4 {
+  font-family: 'Linux Libertine O', Georgia, serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--wiki-gold, #c8a84b);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin: 0 0 14px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--wiki-border, rgba(200,168,75,0.15));
+}
+
+.wiki-footer-col nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.wiki-footer-col nav a {
+  font-size: 13px;
+  color: var(--wiki-text2, #8a8a9a);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.wiki-footer-col nav a:hover {
+  color: var(--wiki-gold, #c8a84b);
+}
+
+.wiki-footer-bottom {
+  border-top: 1px solid var(--wiki-border, rgba(200,168,75,0.1));
+  padding-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.wiki-footer-bottom p {
+  font-size: 12px;
+  color: var(--wiki-text2, #8a8a9a);
+  opacity: 0.65;
+  margin: 0;
+}
+
+.footer-disclaimer {
+  font-size: 11px;
+  color: var(--wiki-text2, #8a8a9a);
+  opacity: 0.45;
+  margin: 0;
+  text-align: right;
+}
+
+@media (max-width: 768px) {
+  .wiki-footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+  .wiki-footer-brand { grid-column: 1 / -1; }
+  .footer-disclaimer { text-align: left; }
+}
+
+@media (max-width: 480px) {
+  .wiki-footer-grid { grid-template-columns: 1fr; }
+}

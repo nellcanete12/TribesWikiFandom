@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Warriors | Tribes of Malaya Wiki</title>
+<link href="https://fonts.googleapis.com/css2?family=Linux+Libertine+O:ital,wght@0,400;0,700;1,400&family=Noto+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="../wiki.html" class="wiki-wordmark">
+      <div class="wordmark-icon">T</div>
+      <div class="wordmark-text">Tribes of Malaya<div class="wordmark-sub">Official Wiki</div></div>
+    </a>
+    <div class="header-search">
+      <input type="text" id="wiki-search" placeholder="Search items, tribes, buildings...">
+      <div class="header-search-icon">🔍</div>
+      <div id="search-results"></div>
+    </div>
+    <div class="header-links">
+      <a href="../wiki.html" class="header-link">Home</a>
+      <a href="https://s1.tribesofmalaya.com/" class="header-link play-btn">PLAY NOW</a>
+    </div>
+  </div>
+</header>
+
+<div class="wiki-layout">
+  <aside class="wiki-sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Navigation</div>
+      <nav class="sidebar-nav">
+        <a href="../wiki.html">Main Page</a>
+        <a href="../tribes/index.html">Tribes</a>
+        <a href="../items/index.html">Items</a>
+        <a href="../buildings/index.html">Buildings</a>
+      </nav>
+    </div>
+  </aside>
+
+  <main class="wiki-main">
+    <div class="page-title-bar">
+      <h1 class="page-title">Warriors</h1>
+      <div class="page-subtitle">All 5 trainable combat units in Tribes of Malaya</div>
+    </div>
+
+    <div class="wiki-section">
+      <h2 class="wiki-h2">Melee Warriors</h2>
+      <div class="buildings-grid">
+        <a href="spearman.html" class="building-card" style="text-decoration:none">
+          <div class="resource-icon"><img src="https://images.tribesofmalaya.com/populations/sugbuanon-spearman-v3.png" alt="Spearman" style="width:48px; height:48px;"></div>
+          <div class="building-name">Spearman</div>
+        </a>
+        <a href="swordsman.html" class="building-card" style="text-decoration:none">
+          <div class="resource-icon"><img src="https://images.tribesofmalaya.com/populations/tagalog-guardian-v2.png" alt="Swordsman" style="width:48px; height:48px;"></div>
+          <div class="building-name">Guardian</div>
+        </a>
+        <a href="axeman.html" class="building-card" style="text-decoration:none">
+          <div class="resource-icon"><img src="https://via.placeholder.com/64?text=Axeman" alt="Axeman" style="width:48px; height:48px;"></div>
+          <div class="building-name">Axeman</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="wiki-section">
+      <h2 class="wiki-h2">Ranged Warriors</h2>
+      <div class="buildings-grid">
+        <a href="archer.html" class="building-card" style="text-decoration:none">
+          <div class="resource-icon"><img src="https://images.tribesofmalaya.com/populations/sugbuanon-archer-v2.png" alt="Archer" style="width:48px; height:48px;"></div>
+          <div class="building-name">Bow Man</div>
+        </a>
+        <a href="gunner.html" class="building-card" style="text-decoration:none">
+          <div class="resource-icon"><img src="https://images.tribesofmalaya.com/populations/tagalog-gunner-v1.png" alt="Gunner" style="width:48px; height:48px;"></div>
+          <div class="building-name">Musketeer</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="wiki-section">
+      <h2 class="wiki-h2">Combat Overview</h2>
+      <div class="wiki-notice notice-tip" style="margin-bottom: 20px; padding: 15px; background: rgba(200,168,75,0.05); border-left: 4px solid var(--wiki-gold); font-size: 14px;">
+        <strong>Combat Strategy:</strong> Effective armies combine melee units for frontline damage absorption with ranged units for consistent damage. Adjust your composition based on enemy defenses and available resources.
+      </div>
+      
+      <p class="wiki-p"><strong>Melee Units</strong> are trained at the Training Grounds and excel at direct combat. They require various melee weapons (Spear, Sword, Stone Axe) and are suited for raids, defense, and sieges. Melee units typically have higher health but lower range compared to ranged units.</p>
+      
+      <p class="wiki-p"><strong>Ranged Units</strong> are trained at the Archery Grounds and attack from a distance. They require ranged weapons (Bow and Arrow, Gun) and are essential for dealing consistent damage while staying safe from melee attackers. Position them carefully to maximize their effectiveness.</p>
+    </div>
+
+    <div class="wiki-section">
+      <h2 class="wiki-h2">Training Requirements</h2>
+      <p class="wiki-p">All warriors require food and the appropriate weapon for training. Make sure you have:</p>
+      <ul style="margin-left: 20px; color: var(--wiki-text2);">
+        <li>Adequate food production to sustain training</li>
+        <li>A Crafters Tent producing the required weapons</li>
+        <li>A Training Grounds or Archery Grounds depending on unit type</li>
+        <li>Sufficient storage capacity for resources</li>
+      </ul>
+      <p class="wiki-p">Plan your production chain carefully to avoid bottlenecks when scaling up your army.</p>
+    </div>
+  </main>
+</div>
+
+<script src="../js/search.js"></script>
+</body>
+</html>

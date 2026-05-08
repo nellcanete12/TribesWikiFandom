@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ITEM_NAME}} | Tribes of Malaya Wiki</title>
+<link href="https://fonts.googleapis.com/css2?family=Linux+Libertine+O:ital,wght@0,400;0,700;1,400&family=Noto+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<style>
+/* ── Related Resources Section ── */
+.related-resources-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+  margin-top: 4px;
+}
+
+.related-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 18px;
+  background: var(--wiki-surface, #1a1a1f);
+  border: 1px solid var(--wiki-border, rgba(200,168,75,0.15));
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.2s, background 0.2s, transform 0.15s;
+  cursor: pointer;
+}
+
+.related-card:hover {
+  border-color: var(--wiki-gold, #c8a84b);
+  background: rgba(200,168,75,0.04);
+  transform: translateY(-2px);
+}
+
+.related-card-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  line-height: 1;
+}
+
+.related-card-icon img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+}
+
+.related-card-name {
+  font-family: 'Linux Libertine O', Georgia, serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--wiki-text, #e8e8e8);
+  margin-bottom: 3px;
+}
+
+.related-card-desc {
+  font-size: 12px;
+  color: var(--wiki-text2, #8a8a9a);
+  line-height: 1.5;
+}
+
+
+</style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="../wiki.html" class="wiki-wordmark">
+      <div class="wordmark-icon">T</div>
+      <div class="wordmark-text">Tribes of Malaya<div class="wordmark-sub">Official Wiki</div></div>
+    </a>
+    <div class="header-search">
+      <input type="text" id="wiki-search" placeholder="Search items, tribes, buildings...">
+      <div class="header-search-icon">🔍</div>
+      <div id="search-results"></div>
+    </div>
+    <div class="header-links">
+      <a href="../wiki.html" class="header-link">Home</a>
+      <a href="https://s1.tribesofmalaya.com/" class="header-link play-btn">PLAY NOW</a>
+    </div>
+  </div>
+</header>
+
+<div class="wiki-layout">
+  <aside class="wiki-sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Navigation</div>
+      <nav class="sidebar-nav">
+        <a href="../wiki.html">Main Page</a>
+        <a href="../tribes/index.html">Tribes</a>
+        <a href="index.html" class="active">Items</a>
+        <a href="../buildings/index.html">Buildings</a>
+      </nav>
+    </div>
+  </aside>
+
+  <main class="wiki-main">
+    <div class="page-title-bar">
+      <h1 class="page-title">{{ITEM_NAME}}</h1>
+      <div class="page-subtitle">{{ITEM_CATEGORY}}</div>
+    </div>
+
+    <div class="item-infobox">
+      <div class="item-infobox-header">
+        <div class="item-infobox-title">{{ITEM_NAME}}</div>
+      </div>
+      <div class="item-infobox-image">{{ITEM_ICON}}</div>
+      <div class="item-infobox-section">Item Info</div>
+      <table class="item-infobox-table">
+        <tr><th>Type</th><td>{{ITEM_TYPE}}</td></tr>
+        <tr><th>Rarity</th><td>{{ITEM_RARITY}}</td></tr>
+        <tr><th>Obtained from</th><td>{{ITEM_SOURCE}}</td></tr>
+      </table>
+      <div class="item-infobox-section">Crafting</div>
+      <table class="item-infobox-table">
+        <tr><th>Ingredients</th><td>{{ITEM_INGREDIENTS}}</td></tr>
+        <tr><th>Yield</th><td>{{ITEM_YIELD}}</td></tr>
+        <tr><th>Time</th><td>{{ITEM_TIME}}</td></tr>
+      </table>
+    </div>
+
+    <div class="wiki-section">
+      <h2 class="wiki-h2">Description</h2>
+      <p class="wiki-p">{{ITEM_DESCRIPTION}}</p>
+    </div>
+
+    <div class="wiki-section">
+      <h2 class="wiki-h2">Usage</h2>
+      <p class="wiki-p">{{ITEM_USAGE}}</p>
+    </div>
+
+    <!-- ══════════════ RELATED RESOURCES ══════════════ -->
+    <div class="wiki-section">
+      <h2 class="wiki-h2">Related Resources</h2>
+      <div class="related-resources-grid">
+
+        <!-- Placeholder card 1 — replace href, src, name, desc -->
+        <a href="../resources/placeholder-1.html" class="related-card">
+          <div class="related-card-icon">
+            <img src="{{RELATED_IMG_1}}" alt="{{RELATED_NAME_1}}">
+          </div>
+          <div>
+            <div class="related-card-name">{{RELATED_NAME_1}}</div>
+            <div class="related-card-desc">{{RELATED_DESC_1}}</div>
+          </div>
+        </a>
+
+        <!-- Placeholder card 2 -->
+        <a href="../resources/placeholder-2.html" class="related-card">
+          <div class="related-card-icon">
+            <img src="{{RELATED_IMG_2}}" alt="{{RELATED_NAME_2}}">
+          </div>
+          <div>
+            <div class="related-card-name">{{RELATED_NAME_2}}</div>
+            <div class="related-card-desc">{{RELATED_DESC_2}}</div>
+          </div>
+        </a>
+
+        <!-- Placeholder card 3 -->
+        <a href="../resources/placeholder-3.html" class="related-card">
+          <div class="related-card-icon">
+            <img src="{{RELATED_IMG_3}}" alt="{{RELATED_NAME_3}}">
+          </div>
+          <div>
+            <div class="related-card-name">{{RELATED_NAME_3}}</div>
+            <div class="related-card-desc">{{RELATED_DESC_3}}</div>
+          </div>
+        </a>
+
+        <!-- Placeholder card 4 — remove if not needed -->
+        <a href="../resources/placeholder-4.html" class="related-card">
+          <div class="related-card-icon">
+            <img src="{{RELATED_IMG_4}}" alt="{{RELATED_NAME_4}}">
+          </div>
+          <div>
+            <div class="related-card-name">{{RELATED_NAME_4}}</div>
+            <div class="related-card-desc">{{RELATED_DESC_4}}</div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+    <!-- ════════════════════════════════════════════════ -->
+
+  </main>
+</div>
+
+
+<footer class="wiki-footer">
+  <div class="wiki-footer-inner">
+    <div class="wiki-footer-grid">
+
+      <!-- Brand column -->
+      <div class="wiki-footer-brand">
+        <a href="wiki.html" class="footer-logo">
+          <div class="footer-logo-icon">T</div>
+          <div class="footer-logo-text">
+            Tribes of Malaya
+            <div class="footer-logo-sub">Wiki Fandom</div>
+          </div>
+        </a>
+        <p>A community-maintained encyclopedia for the browser-based MMO city-builder wargame set in pre-colonial Philippines. Anyone can contribute.</p>
+        <a href="https://s1.tribesofmalaya.com/" class="footer-play-btn">▶ Play Now</a>
+      </div>
+
+      <!-- Explore column -->
+      <div class="wiki-footer-col">
+        <h4>Explore</h4>
+        <nav>
+          <a href="wiki.html">Main Page</a>
+          <a href="tribes/index.html">Tribes</a>
+          <a href="items/index.html">Items</a>
+          <a href="buildings/index.html">Buildings</a>
+          <a href="warriors/warrior.html">Warriors</a>
+        </nav>
+      </div>
+
+      <!-- Resources column -->
+      <div class="wiki-footer-col">
+        <h4>Resources</h4>
+        <nav>
+          <a href="resources/food.html">Food</a>
+          <a href="resources/wood.html">Wood</a>
+          <a href="resources/minerals.html">Minerals</a>
+        </nav>
+      </div>
+
+      <!-- Community column -->
+      <div class="wiki-footer-col">
+        <h4>Community</h4>
+        <nav>
+          <a href="https://s1.tribesofmalaya.com/">Official Game</a>
+          <a href="https://web.facebook.com/groups/1036095719582960">Facebook Page</a>
+          <a href="#">Contribute to Wiki</a>
+          <a href="https://v0-new-project-ogcozordmht.vercel.app/?fbclid=IwY2xjawRqT3dleHRuA2FlbQIxMABicmlkETFjblJVc2pqS2t5Z1dpMzBDc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHijhnkSwYL0ob-ASsg5NSi7KziFMT9lKSaC64yY26H4-HEF4AAdZb_fKxrEd_aem_sE4SJzwySBSIgW4fqybQlA">Report an Error</a>
+        </nav>
+      </div>
+
+    </div>
+
+    <div class="wiki-footer-bottom">
+      <p>© 2025 Tribes of Malaya Wiki Fandom. Content is available under the community wiki license.</p>
+      <p class="footer-disclaimer">Tribes of Malaya is a trademark of its respective owners. This wiki is fan-made and not officially affiliated.</p>
+    </div>
+  </div>
+</footer>
+<!-- ══════════════════════════════════════════ -->
+
+  </div>
+</footer>
+<!-- ══════════════════════════════════════════ -->
+
+<script src="../js/search.js"></script>
+</body>
+</html>
