@@ -490,17 +490,42 @@ function addItem() {
 
   var item = { id: Date.now(), type: currentType, src: src, caption: caption };
 
-  if (currentMode === 'sidebar') {
-    item.link = link;
-    ads.push(item);
-    localStorage.setItem('tom_wiki_ads', JSON.stringify(ads));
-    renderAds();
-    showToast('✓ Ad added to sidebar!');
+  function saveItem(item) {
+    if (currentMode === 'sidebar') {
+      item.link = link;
+      ads.push(item);
+      localStorage.setItem('tom_wiki_ads', JSON.stringify(ads));
+      renderAds();
+      showToast('✓ Ad added to sidebar!');
+    } else {
+      gameplay.push(item);
+      localStorage.setItem('tom_wiki_gameplay', JSON.stringify(gameplay));
+      renderGameplay();
+      showToast('✓ Clip added to Gameplay!');
+    }
+  }
+
+  // For TikTok: fetch & store thumbnail URL so wiki.html can show it without any fetch
+  if (currentType === 'tiktok') {
+    var ttId = src.replace(/.*\/video\/(\d+).*/, '$1');
+    // Try noembed first (more reliable CORS), fallback to TikTok oEmbed
+    fetch('https://noembed.com/embed?url=https://www.tiktok.com/@x/video/' + ttId)
+      .then(function(r){ return r.json(); })
+      .then(function(d){
+        if (d && d.thumbnail_url) { item.thumbnail = d.thumbnail_url; return; }
+        return fetch('https://www.tiktok.com/oembed?url=https://www.tiktok.com/@user/video/' + ttId)
+          .then(function(r){ return r.json(); })
+          .then(function(d2){ if (d2 && d2.thumbnail_url) item.thumbnail = d2.thumbnail_url; });
+      })
+      .catch(function(){
+        return fetch('https://www.tiktok.com/oembed?url=https://www.tiktok.com/@user/video/' + ttId)
+          .then(function(r){ return r.json(); })
+          .then(function(d){ if (d && d.thumbnail_url) item.thumbnail = d.thumbnail_url; })
+          .catch(function(){});
+      })
+      .finally(function(){ saveItem(item); });
   } else {
-    gameplay.push(item);
-    localStorage.setItem('tom_wiki_gameplay', JSON.stringify(gameplay));
-    renderGameplay();
-    showToast('✓ Clip added to Gameplay!');
+    saveItem(item);
   }
 
   // reset form
@@ -556,11 +581,14 @@ function buildCard(item, i, total, onDelete, onMove) {
     }
   } else if (item.type === 'tiktok') {
     var ttId = item.src.replace(/.*\/video\/(\d+).*/, '$1');
-    if (ttId && ttId !== item.src) {
+    if (item.thumbnail) {
+      // Use pre-stored thumbnail (fast, no fetch needed)
+      thumbHTML = '<img src="' + item.thumbnail + '" alt="TikTok thumb" style="width:100%;height:100%;object-fit:cover;"'
+        + ' onerror="this.outerHTML=\'<div class=\\\"thumb-icon\\\">♪</div>\'">';
+    } else if (ttId && ttId !== item.src) {
       // TikTok oEmbed thumbnail via noembed proxy
       thumbHTML = '<img id="tt-thumb-' + item.id + '" src="" alt="TikTok thumb" style="width:100%;height:100%;object-fit:cover;display:none;" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'">'
         + '<div class="thumb-icon" id="tt-icon-' + item.id + '" style="display:flex;">♪</div>';
-      // Fetch thumbnail async
       (function(elId, iconId, videoId) {
         fetch('https://noembed.com/embed?url=https://www.tiktok.com/@x/video/' + videoId)
           .then(function(r){ return r.json(); })
