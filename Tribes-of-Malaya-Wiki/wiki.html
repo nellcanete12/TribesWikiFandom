@@ -528,26 +528,45 @@
     if (clip.type === 'tiktok') {
       var videoId = clip.src.replace(/.*\/video\/(\d+).*/, '$1');
       var thumbId = 'tt-card-' + i;
+      // Use stored thumbnail if available (saved by ad-manager), else show styled placeholder
+      var storedThumb = clip.thumbnail || '';
+      var placeholderStyle = 'position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;'
+        + 'background:linear-gradient(160deg,#1a0533 0%,#0d0d1a 60%,#001a33 100%);';
       embedHTML =
         '<div class="tiktok-card-embed">'
-          + '<img id="' + thumbId + '" src="" alt="TikTok thumbnail" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:none;">'
-          + '<div id="' + thumbId + '-icon" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:40px;opacity:0.25;">♪</div>'
+          + '<img id="' + thumbId + '" src="' + storedThumb + '" alt="TikTok thumbnail" '
+          + 'style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;' + (storedThumb ? '' : 'display:none;') + '">'
+          + '<div id="' + thumbId + '-icon" style="' + placeholderStyle + (storedThumb ? 'display:none;' : '') + '">'
+            + '<div style="font-size:48px;margin-bottom:8px;">♪</div>'
+            + '<div style="font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.35);">TikTok</div>'
+          + '</div>'
           + '<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;">'
             + '<div style="background:rgba(0,0,0,0.55);border-radius:50%;width:52px;height:52px;display:flex;align-items:center;justify-content:center;font-size:22px;">▶</div>'
           + '</div>'
         + '</div>';
-      (function(imgId, iconId, vid) {
+      // Try fetching thumbnail from multiple APIs
+      (function(imgId, iconId, vid, hasSrc) {
+        if (hasSrc) return; // already have stored thumbnail
+        function applyThumb(url) {
+          var img = document.getElementById(imgId);
+          var icon = document.getElementById(iconId);
+          if (img)  { img.src = url; img.style.display = 'block'; }
+          if (icon) { icon.style.display = 'none'; }
+        }
+        // Try noembed first, then TikTok oEmbed
         fetch('https://noembed.com/embed?url=https://www.tiktok.com/@x/video/' + vid)
           .then(function(r){ return r.json(); })
-          .then(function(d){
-            if (d && d.thumbnail_url) {
-              var img = document.getElementById(imgId);
-              var icon = document.getElementById(iconId);
-              if (img)  { img.src = d.thumbnail_url; img.style.display = 'block'; }
-              if (icon) { icon.style.display = 'none'; }
-            }
-          }).catch(function(){});
-      })(thumbId, thumbId + '-icon', videoId);
+          .then(function(d){ if (d && d.thumbnail_url) { applyThumb(d.thumbnail_url); return; }
+            return fetch('https://www.tiktok.com/oembed?url=https://www.tiktok.com/@user/video/' + vid)
+              .then(function(r){ return r.json(); })
+              .then(function(d2){ if (d2 && d2.thumbnail_url) applyThumb(d2.thumbnail_url); });
+          }).catch(function(){
+            fetch('https://www.tiktok.com/oembed?url=https://www.tiktok.com/@user/video/' + vid)
+              .then(function(r){ return r.json(); })
+              .then(function(d){ if (d && d.thumbnail_url) applyThumb(d.thumbnail_url); })
+              .catch(function(){});
+          });
+      })(thumbId, thumbId + '-icon', videoId, !!storedThumb);
 
     } else if (clip.type === 'youtube') {
       var ytId = clip.src.replace(/.*(?:youtu\.be\/|v=)([^&]+).*/, '$1');
