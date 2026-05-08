@@ -14,7 +14,6 @@
   background: var(--wiki-surface, #1a1a1f);
   overflow: hidden;
 }
-
 .sidebar-ad-label {
   font-size: 9px;
   font-weight: 700;
@@ -26,7 +25,6 @@
   padding: 5px 0 4px;
   border-bottom: 1px solid var(--wiki-border, rgba(200,168,75,0.1));
 }
-
 .sidebar-ad-item {
   display: flex;
   flex-direction: column;
@@ -42,20 +40,12 @@
 }
 .sidebar-ad-item:last-child { border-bottom: none; }
 .sidebar-ad-item:hover { opacity: 0.85; }
-
-.sidebar-ad-item img {
-  width: 100%;
-  display: block;
-  object-fit: cover;
-}
-
+.sidebar-ad-item img,
 .sidebar-ad-item video {
   width: 100%;
   display: block;
   object-fit: cover;
 }
-
-/* TikTok embed wrapper — centered */
 .sidebar-tiktok-wrapper {
   width: 100%;
   display: flex;
@@ -64,7 +54,6 @@
   overflow: hidden;
   background: #010101;
 }
-
 .sidebar-tiktok-wrapper iframe {
   width: 100%;
   min-height: 420px;
@@ -72,7 +61,6 @@
   pointer-events: none;
   display: block;
 }
-
 .sidebar-ad-caption {
   position: relative;
   background: rgba(0,0,0,0.75);
@@ -84,7 +72,6 @@
   box-sizing: border-box;
   line-height: 1.3;
 }
-
 .sidebar-ad-empty {
   padding: 28px 12px;
   text-align: center;
@@ -94,29 +81,22 @@
   line-height: 1.6;
 }
 
-.sidebar-ad-manage-link {
-  display: block;
-  text-align: center;
-  font-size: 10px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  font-weight: 700;
-  color: var(--wiki-gold, #c8a84b);
-  text-decoration: none;
-  padding: 7px 0;
-  border-top: 1px solid var(--wiki-border, rgba(200,168,75,0.15));
-  opacity: 0.7;
-  transition: opacity 0.2s;
-}
-.sidebar-ad-manage-link:hover { opacity: 1; }
-
-/* ── Gameplay TikTok Section ── */
+/* ── Gameplay Grid ── */
 .gameplay-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 14px;
 }
-
+.gameplay-empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--wiki-text2, #8a8a9a);
+  font-size: 13px;
+  opacity: 0.5;
+  border: 1px dashed var(--wiki-border, rgba(200,168,75,0.2));
+  line-height: 1.8;
+}
 .tiktok-card {
   position: relative;
   border: 1px solid var(--wiki-border, rgba(200,168,75,0.15));
@@ -126,12 +106,10 @@
   display: block;
   transition: border-color 0.2s, transform 0.15s;
 }
-
 .tiktok-card:hover {
   border-color: var(--wiki-gold, #c8a84b);
   transform: translateY(-2px);
 }
-
 .tiktok-card-embed {
   position: relative;
   width: 100%;
@@ -139,7 +117,6 @@
   overflow: hidden;
   background: #0d0d0f;
 }
-
 .tiktok-card-embed iframe {
   position: absolute;
   top: 0; left: 0;
@@ -147,7 +124,49 @@
   border: none;
   pointer-events: none;
 }
-
+/* video card inside gameplay grid */
+.tiktok-card .gameplay-video-wrap {
+  position: relative;
+  width: 100%;
+  padding-bottom: 177.78%;
+  background: #000;
+  overflow: hidden;
+}
+.tiktok-card .gameplay-video-wrap video {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+/* image card inside gameplay grid */
+.tiktok-card .gameplay-img-wrap {
+  position: relative;
+  width: 100%;
+  padding-bottom: 177.78%;
+  background: #111;
+  overflow: hidden;
+}
+.tiktok-card .gameplay-img-wrap img {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+/* youtube card inside gameplay grid */
+.tiktok-card .gameplay-yt-wrap {
+  position: relative;
+  width: 100%;
+  padding-bottom: 177.78%;
+  background: #000;
+  overflow: hidden;
+}
+.tiktok-card .gameplay-yt-wrap iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  border: none;
+  pointer-events: none;
+}
 .tiktok-card-footer {
   padding: 10px 12px;
   border-top: 1px solid var(--wiki-border, rgba(200,168,75,0.1));
@@ -155,7 +174,6 @@
   align-items: center;
   justify-content: space-between;
 }
-
 .tiktok-card-label {
   font-family: 'Noto Sans', sans-serif;
   font-size: 11px;
@@ -164,12 +182,10 @@
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
-
 .tiktok-card-sub {
   font-size: 11px;
   color: var(--wiki-text2, #8a8a9a);
 }
-
 .tiktok-watch-btn {
   font-size: 10px;
   font-weight: 700;
@@ -180,12 +196,11 @@
   border: 1px solid rgba(200,168,75,0.25);
   padding: 3px 10px;
   transition: background 0.2s;
+  white-space: nowrap;
 }
-
 .tiktok-card:hover .tiktok-watch-btn {
   background: rgba(200,168,75,0.2);
 }
-
 @media (max-width: 900px) {
   .gameplay-grid { grid-template-columns: repeat(2, 1fr); }
 }
@@ -225,16 +240,13 @@
       </nav>
     </div>
 
-    <!-- ── Vertical Ad Slot ── -->
+    <!-- ── Sidebar Ad Slot ── -->
     <div class="sidebar-ad-slot">
       <div class="sidebar-ad-label">Advertisement</div>
       <div id="sidebar-ads-container">
-        <!-- Ads injected by JS from localStorage -->
         <div class="sidebar-ad-empty">No ads yet.<br>Add one in the<br>Ad Manager.</div>
       </div>
     </div>
-    <!-- ─────────────────── -->
-
   </aside>
 
   <main class="wiki-main">
@@ -247,89 +259,15 @@
         <span class="banner-tag tag-philippines">PHILIPPINES</span>
       </div>
 
-      <!-- ── Gameplay Videos ── -->
+      <!-- ── Gameplay Videos (loaded from localStorage) ── -->
       <div style="margin-top:24px;">
         <div style="font-family:'Linux Libertine O',Georgia,serif;font-size:18px;font-weight:700;color:var(--wiki-gold,#c8a84b);margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--wiki-border,rgba(200,168,75,0.15));">Gameplay</div>
-        <div class="gameplay-grid">
-
-        <!-- Card 1 -->
-        <a href="https://www.tiktok.com/@exzy.ja/video/7636643739150175504" target="_blank" rel="noopener" class="tiktok-card">
-          <div class="tiktok-card-embed">
-            <iframe
-              src="https://www.tiktok.com/embed/v2/7636643739150175504"
-              allowfullscreen
-              scrolling="no"
-              allow="encrypted-media;">
-            </iframe>
-          </div>
-          <div class="tiktok-card-footer">
-            <div>
-              <div class="tiktok-card-label">Gameplay #1</div>
-              <div class="tiktok-card-sub">@exzy.ja on TikTok</div>
-            </div>
-            <span class="tiktok-watch-btn">Watch ↗</span>
-          </div>
-        </a>
-
-        <!-- Card 2 -->
-        <a href="https://www.tiktok.com/@exzy.ja/video/7636643739150175504" target="_blank" rel="noopener" class="tiktok-card">
-          <div class="tiktok-card-embed">
-            <iframe
-              src="https://www.tiktok.com/embed/v2/7636643739150175504"
-              allowfullscreen
-              scrolling="no"
-              allow="encrypted-media;">
-            </iframe>
-          </div>
-          <div class="tiktok-card-footer">
-            <div>
-              <div class="tiktok-card-label">Gameplay #2</div>
-              <div class="tiktok-card-sub">@exzy.ja on TikTok</div>
-            </div>
-            <span class="tiktok-watch-btn">Watch ↗</span>
-          </div>
-        </a>
-
-        <!-- Card 3 -->
-        <a href="https://www.tiktok.com/@exzy.ja/video/7636643739150175504" target="_blank" rel="noopener" class="tiktok-card">
-          <div class="tiktok-card-embed">
-            <iframe
-              src="https://www.tiktok.com/embed/v2/7636643739150175504"
-              allowfullscreen
-              scrolling="no"
-              allow="encrypted-media;">
-            </iframe>
-          </div>
-          <div class="tiktok-card-footer">
-            <div>
-              <div class="tiktok-card-label">Gameplay #3</div>
-              <div class="tiktok-card-sub">@exzy.ja on TikTok</div>
-            </div>
-            <span class="tiktok-watch-btn">Watch ↗</span>
-          </div>
-        </a>
-
-        <!-- Card 4 — photo/slideshow post -->
-        <a href="https://www.tiktok.com/@exzy.ja/photo/7637377574330567957" target="_blank" rel="noopener" class="tiktok-card">
-          <div style="position:relative;width:100%;padding-bottom:177.78%;background:#0d0d0f;">
-            <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;">
-              <div style="font-size:44px;line-height:1;">🖼️</div>
-              <div style="font-family:'Linux Libertine O',Georgia,serif;font-size:13px;color:var(--wiki-gold,#c8a84b);font-weight:700;letter-spacing:0.05em;">Photo Post</div>
-              <div style="font-size:11px;color:var(--wiki-text2,#8a8a9a);text-align:center;padding:0 16px;line-height:1.5;">Click to view this slideshow on TikTok</div>
-            </div>
-          </div>
-          <div class="tiktok-card-footer">
-            <div>
-              <div class="tiktok-card-label">Gameplay #4</div>
-              <div class="tiktok-card-sub">@exzy.ja on TikTok</div>
-            </div>
-            <span class="tiktok-watch-btn">View ↗</span>
-          </div>
-        </a>
-
-        </div><!-- end gameplay-grid -->
-      </div><!-- end gameplay wrapper -->
-    </div><!-- end page-banner -->
+        <div class="gameplay-grid" id="gameplay-grid">
+          <!-- Injected by JS from localStorage tom_wiki_gameplay -->
+          <div class="gameplay-empty">No gameplay videos yet.<br>No Gameplay Availbale</div>
+        </div>
+      </div>
+    </div>
 
     <div class="wiki-section">
       <h2 class="wiki-h2">Early Game Build Order</h2>
@@ -455,8 +393,6 @@
 <footer class="wiki-footer">
   <div class="wiki-footer-inner">
     <div class="wiki-footer-grid">
-
-      <!-- Brand column -->
       <div class="wiki-footer-brand">
         <a href="wiki.html" class="footer-logo">
           <div class="footer-logo-icon">T</div>
@@ -468,8 +404,6 @@
         <p>A community-maintained encyclopedia for the browser-based MMO city-builder wargame set in pre-colonial Philippines. Anyone can contribute.</p>
         <a href="https://s1.tribesofmalaya.com/" class="footer-play-btn">▶ Play Now</a>
       </div>
-
-      <!-- Explore column -->
       <div class="wiki-footer-col">
         <h4>Explore</h4>
         <nav>
@@ -480,8 +414,6 @@
           <a href="warriors/warrior.html">Warriors</a>
         </nav>
       </div>
-
-      <!-- Resources column -->
       <div class="wiki-footer-col">
         <h4>Resources</h4>
         <nav>
@@ -490,8 +422,6 @@
           <a href="resources/minerals.html">Minerals</a>
         </nav>
       </div>
-
-      <!-- Community column -->
       <div class="wiki-footer-col">
         <h4>Community</h4>
         <nav>
@@ -501,42 +431,38 @@
           <a href="https://v0-new-project-ogcozordmht.vercel.app/?fbclid=IwY2xjawRqT3dleHRuA2FlbQIxMABicmlkETFjblJVc2pqS2t5Z1dpMzBDc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHijhnkSwYL0ob-ASsg5NSi7KziFMT9lKSaC64yY26H4-HEF4AAdZb_fKxrEd_aem_sE4SJzwySBSIgW4fqybQlA">Report an Error</a>
         </nav>
       </div>
-
     </div>
-
     <div class="wiki-footer-bottom">
       <p>© 2025 Tribes of Malaya Wiki Fandom. Content is available under the community wiki license.</p>
       <p class="footer-disclaimer">Tribes of Malaya is a trademark of its respective owners. This wiki is fan-made and not officially affiliated.</p>
     </div>
   </div>
 </footer>
-<!-- ══════════════════════════════════════════ -->
 
 <script src="js/search.js"></script>
-
 <script>
-// ── Load sidebar ads from localStorage ──
+// ════════════════════════════════════════════
+//  SIDEBAR ADS — loaded from localStorage
+// ════════════════════════════════════════════
 (function() {
-  const container = document.getElementById('sidebar-ads-container');
-  let ads = [];
+  var container = document.getElementById('sidebar-ads-container');
+  var ads = [];
   try { ads = JSON.parse(localStorage.getItem('tom_wiki_ads') || '[]'); } catch(e) {}
   if (!ads.length) return;
-
   container.innerHTML = '';
 
   ads.forEach(function(ad) {
-    const a = document.createElement('a');
+    var a = document.createElement('a');
     a.className = 'sidebar-ad-item';
 
     if (ad.type === 'image') {
       a.href = ad.link || '#';
       if (ad.link) { a.target = '_blank'; a.rel = 'noopener'; }
       a.innerHTML =
-        '<img src="' + ad.src + '" alt="' + (ad.caption || 'Ad') + '" style="width:100%;max-height:280px;object-fit:cover;display:block;">'
+        '<img src="' + ad.src + '" alt="' + (ad.caption||'Ad') + '" style="width:100%;max-height:280px;object-fit:cover;display:block;">'
         + (ad.caption ? '<div class="sidebar-ad-caption">' + ad.caption + '</div>' : '');
 
     } else if (ad.type === 'video') {
-      // Direct .mp4 video — autoplay works fine
       a.href = ad.link || '#';
       if (ad.link) { a.target = '_blank'; a.rel = 'noopener'; }
       a.innerHTML =
@@ -544,39 +470,26 @@
         + (ad.caption ? '<div class="sidebar-ad-caption">' + ad.caption + '</div>' : '');
 
     } else if (ad.type === 'tiktok') {
-      // TikTok blocks autoplay in iframes on 3rd-party sites — best we can do is
-      // show the centered embed preview and make the whole card a link to TikTok.
-      const videoId = ad.src.replace(/.*\/video\/(\d+).*/, '$1');
-      a.href = ad.src || ('#');
-      a.target = '_blank';
-      a.rel = 'noopener';
-      a.style.cursor = 'pointer';
+      var videoId = ad.src.replace(/.*\/video\/(\d+).*/, '$1');
+      a.href = ad.src || '#';
+      a.target = '_blank'; a.rel = 'noopener';
       a.innerHTML =
         '<div class="sidebar-tiktok-wrapper">'
-          + '<iframe'
-          + ' src="https://www.tiktok.com/embed/v2/' + videoId + '"'
-          + ' scrolling="no"'
-          + ' allow="encrypted-media;"'
-          + ' allowfullscreen'
-          + ' style="width:100%;min-height:420px;border:none;display:block;pointer-events:none;">'
-          + '</iframe>'
+          + '<iframe src="https://www.tiktok.com/embed/v2/' + videoId
+          + '" scrolling="no" allow="encrypted-media;" allowfullscreen'
+          + ' style="width:100%;min-height:420px;border:none;display:block;pointer-events:none;"></iframe>'
         + '</div>'
         + (ad.caption ? '<div class="sidebar-ad-caption">' + ad.caption + '</div>' : '');
 
     } else if (ad.type === 'youtube') {
-      // YouTube autoplay works with ?autoplay=1&mute=1
-      const ytId = ad.src.replace(/.*(?:youtu\.be\/|v=)([^&]+).*/, '$1');
-      a.href = '#';
-      a.style.pointerEvents = 'none';
+      var ytId = ad.src.replace(/.*(?:youtu\.be\/|v=)([^&]+).*/, '$1');
+      a.href = '#'; a.style.pointerEvents = 'none';
       a.innerHTML =
         '<div style="width:100%;display:flex;align-items:center;justify-content:center;background:#000;">'
-          + '<iframe'
-          + ' src="https://www.youtube.com/embed/' + ytId + '?autoplay=1&mute=1&loop=1&playlist=' + ytId + '"'
-          + ' height="220"'
-          + ' style="width:100%;border:none;display:block;"'
-          + ' allow="autoplay; encrypted-media"'
-          + ' allowfullscreen>'
-          + '</iframe>'
+          + '<iframe src="https://www.youtube.com/embed/' + ytId
+          + '?autoplay=1&mute=1&loop=1&playlist=' + ytId
+          + '" height="220" style="width:100%;border:none;display:block;"'
+          + ' allow="autoplay; encrypted-media" allowfullscreen></iframe>'
         + '</div>'
         + (ad.caption ? '<div class="sidebar-ad-caption">' + ad.caption + '</div>' : '');
     }
@@ -584,7 +497,73 @@
     container.appendChild(a);
   });
 })();
-</script>
 
+// ════════════════════════════════════════════
+//  GAMEPLAY GRID — loaded from localStorage
+// ════════════════════════════════════════════
+(function() {
+  var grid = document.getElementById('gameplay-grid');
+  var clips = [];
+  try { clips = JSON.parse(localStorage.getItem('tom_wiki_gameplay') || '[]'); } catch(e) {}
+  if (!clips.length) return;
+
+  grid.innerHTML = '';
+
+  clips.forEach(function(clip, i) {
+    var card = document.createElement('a');
+    card.className = 'tiktok-card';
+    card.href = clip.link || clip.src || '#';
+    card.target = '_blank';
+    card.rel = 'noopener';
+
+    var embedHTML = '';
+
+    if (clip.type === 'tiktok') {
+      var videoId = clip.src.replace(/.*\/video\/(\d+).*/, '$1');
+      embedHTML =
+        '<div class="tiktok-card-embed">'
+          + '<iframe src="https://www.tiktok.com/embed/v2/' + videoId
+          + '" allowfullscreen scrolling="no" allow="encrypted-media;"></iframe>'
+        + '</div>';
+
+    } else if (clip.type === 'youtube') {
+      var ytId = clip.src.replace(/.*(?:youtu\.be\/|v=)([^&]+).*/, '$1');
+      embedHTML =
+        '<div class="tiktok-card-embed">'
+          + '<iframe src="https://www.youtube.com/embed/' + ytId
+          + '?mute=1&loop=1&playlist=' + ytId
+          + '" allowfullscreen allow="encrypted-media; autoplay"></iframe>'
+        + '</div>';
+
+    } else if (clip.type === 'video') {
+      embedHTML =
+        '<div class="gameplay-video-wrap">'
+          + '<video src="' + clip.src + '" autoplay muted loop playsinline></video>'
+        + '</div>';
+
+    } else if (clip.type === 'image') {
+      embedHTML =
+        '<div class="gameplay-img-wrap">'
+          + '<img src="' + clip.src + '" alt="' + (clip.caption || 'Gameplay') + '">'
+        + '</div>';
+    }
+
+    var typeLabel = { tiktok: 'TikTok', youtube: 'YouTube', video: 'Video', image: 'Screenshot' }[clip.type] || clip.type;
+    var watchLabel = clip.type === 'image' ? 'View ↗' : 'Watch ↗';
+
+    card.innerHTML =
+      embedHTML
+      + '<div class="tiktok-card-footer">'
+        + '<div>'
+          + '<div class="tiktok-card-label">' + (clip.caption || ('Gameplay #' + (i + 1))) + '</div>'
+          + '<div class="tiktok-card-sub">' + typeLabel + '</div>'
+        + '</div>'
+        + '<span class="tiktok-watch-btn">' + watchLabel + '</span>'
+      + '</div>';
+
+    grid.appendChild(card);
+  });
+})();
+</script>
 </body>
 </html>
