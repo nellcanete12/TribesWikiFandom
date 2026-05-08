@@ -19,6 +19,7 @@
   --text2: #8a8a9a;
   --red: #d95f5f;
   --green: #5fba7d;
+  --blue: #4ba8e8;
 }
 
 body {
@@ -41,72 +42,65 @@ body {
   top: 0;
   z-index: 100;
 }
-
 .adm-header-logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  text-decoration: none;
+  display: flex; align-items: center; gap: 10px; text-decoration: none;
 }
-
 .adm-logo-icon {
   width: 32px; height: 32px;
-  background: var(--gold);
-  color: #13131a;
+  background: var(--gold); color: #13131a;
   font-family: 'Linux Libertine O', Georgia, serif;
-  font-size: 18px;
-  font-weight: 700;
+  font-size: 18px; font-weight: 700;
   display: flex; align-items: center; justify-content: center;
 }
-
 .adm-logo-text {
   font-family: 'Linux Libertine O', Georgia, serif;
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--gold);
-  line-height: 1.1;
+  font-size: 15px; font-weight: 700; color: var(--gold); line-height: 1.1;
 }
-
 .adm-logo-sub {
-  font-size: 9px;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--text2);
+  font-size: 9px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text2);
 }
-
-.adm-header-right {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
+.adm-header-right { display: flex; align-items: center; gap: 16px; }
 .adm-back-link {
-  font-size: 12px;
-  color: var(--text2);
-  text-decoration: none;
-  letter-spacing: 0.05em;
-  transition: color 0.2s;
+  font-size: 12px; color: var(--text2); text-decoration: none;
+  letter-spacing: 0.05em; transition: color 0.2s;
 }
 .adm-back-link:hover { color: var(--gold); }
-
 .adm-badge {
-  background: var(--gold);
-  color: #13131a;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 3px 10px;
+  background: var(--gold); color: #13131a;
+  font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; padding: 3px 10px;
 }
+
+/* ── Mode switcher tabs (Sidebar Ads / Gameplay) ── */
+.adm-mode-bar {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  padding: 0 32px;
+  gap: 0;
+}
+.adm-mode-tab {
+  padding: 12px 24px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text2);
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+  user-select: none;
+}
+.adm-mode-tab:hover { color: var(--text); }
+.adm-mode-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
 
 /* ── Layout ── */
 .adm-layout {
   display: grid;
   grid-template-columns: 380px 1fr;
   gap: 0;
-  min-height: calc(100vh - 56px);
+  min-height: calc(100vh - 96px);
 }
-
 .adm-panel {
   background: var(--surface);
   border-right: 1px solid var(--border);
@@ -115,11 +109,10 @@ body {
   flex-direction: column;
   gap: 20px;
   overflow-y: auto;
-  max-height: calc(100vh - 56px);
+  max-height: calc(100vh - 96px);
   position: sticky;
-  top: 56px;
+  top: 96px;
 }
-
 .adm-main {
   padding: 28px 32px;
   overflow-y: auto;
@@ -128,281 +121,144 @@ body {
 /* ── Section titles ── */
 .adm-section-title {
   font-family: 'Linux Libertine O', Georgia, serif;
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--gold);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding-bottom: 10px;
-  border-bottom: 1px solid var(--border);
-  margin-bottom: 4px;
+  font-size: 13px; font-weight: 700;
+  color: var(--gold); letter-spacing: 0.1em; text-transform: uppercase;
+  padding-bottom: 10px; border-bottom: 1px solid var(--border); margin-bottom: 4px;
 }
 
 /* ── Form ── */
-.adm-field {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
+.adm-field { display: flex; flex-direction: column; gap: 6px; }
 .adm-label {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
-  color: var(--text2);
+  font-size: 11px; font-weight: 700; letter-spacing: 0.07em;
+  text-transform: uppercase; color: var(--text2);
 }
-
 .adm-input, .adm-select, .adm-textarea {
-  background: var(--surface2);
-  border: 1px solid var(--border);
-  color: var(--text);
-  font-family: 'Noto Sans', sans-serif;
-  font-size: 13px;
-  padding: 9px 12px;
-  outline: none;
-  width: 100%;
+  background: var(--surface2); border: 1px solid var(--border);
+  color: var(--text); font-family: 'Noto Sans', sans-serif;
+  font-size: 13px; padding: 9px 12px; outline: none; width: 100%;
   transition: border-color 0.2s;
 }
-
-.adm-input:focus, .adm-select:focus, .adm-textarea:focus {
-  border-color: var(--gold);
-}
-
+.adm-input:focus, .adm-select:focus, .adm-textarea:focus { border-color: var(--gold); }
 .adm-textarea { resize: vertical; min-height: 70px; }
-
 .adm-select option { background: var(--surface2); }
-
-.adm-hint {
-  font-size: 11px;
-  color: var(--text2);
-  line-height: 1.5;
-  opacity: 0.7;
-}
+.adm-hint { font-size: 11px; color: var(--text2); line-height: 1.5; opacity: 0.7; }
 
 /* ── Type tabs ── */
-.type-tabs {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 6px;
-}
-
+.type-tabs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
 .type-tab {
   padding: 8px 4px;
-  background: var(--surface2);
-  border: 1px solid var(--border);
-  color: var(--text2);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  text-align: center;
-  cursor: pointer;
-  transition: all 0.15s;
+  background: var(--surface2); border: 1px solid var(--border);
+  color: var(--text2); font-size: 11px; font-weight: 700;
+  letter-spacing: 0.05em; text-transform: uppercase; text-align: center;
+  cursor: pointer; transition: all 0.15s;
 }
-
 .type-tab:hover { border-color: var(--gold); color: var(--gold); }
 .type-tab.active { background: var(--gold); color: #13131a; border-color: var(--gold); }
 
 /* ── Preview box ── */
 .adm-preview-box {
-  background: var(--surface2);
-  border: 1px dashed var(--border);
-  min-height: 180px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  position: relative;
+  background: var(--surface2); border: 1px dashed var(--border);
+  min-height: 180px; display: flex; align-items: center; justify-content: center;
+  overflow: hidden; position: relative;
 }
-
-.adm-preview-box img,
-.adm-preview-box video {
-  max-width: 100%;
-  max-height: 260px;
-  object-fit: contain;
-  display: block;
+.adm-preview-box img, .adm-preview-box video {
+  max-width: 100%; max-height: 260px; object-fit: contain; display: block;
 }
-
-.adm-preview-box iframe {
-  width: 100%;
-  height: 240px;
-  border: none;
-}
-
+.adm-preview-box iframe { width: 100%; height: 240px; border: none; }
 .adm-preview-placeholder {
-  font-size: 12px;
-  color: var(--text2);
-  opacity: 0.4;
-  text-align: center;
-  padding: 20px;
+  font-size: 12px; color: var(--text2); opacity: 0.4;
+  text-align: center; padding: 20px;
 }
 
 /* ── Buttons ── */
 .adm-btn {
-  padding: 10px 20px;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  border: none;
-  cursor: pointer;
-  transition: opacity 0.2s, transform 0.1s;
+  padding: 10px 20px; font-size: 12px; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase; border: none;
+  cursor: pointer; transition: opacity 0.2s, transform 0.1s;
   font-family: 'Noto Sans', sans-serif;
 }
 .adm-btn:hover { opacity: 0.85; }
 .adm-btn:active { transform: scale(0.98); }
-
 .adm-btn-primary { background: var(--gold); color: #13131a; width: 100%; }
-.adm-btn-danger  { background: var(--red);  color: #fff; padding: 6px 14px; font-size: 11px; }
-.adm-btn-ghost   { background: transparent; color: var(--text2); border: 1px solid var(--border); padding: 6px 14px; font-size: 11px; }
+.adm-btn-danger  { background: var(--red); color: #fff; padding: 6px 14px; font-size: 11px; }
+.adm-btn-ghost   {
+  background: transparent; color: var(--text2);
+  border: 1px solid var(--border); padding: 6px 14px; font-size: 11px;
+}
 .adm-btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
 
-/* ── Ad list ── */
+/* ── List header ── */
 .adm-list-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 16px;
+  display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;
 }
-
 .adm-count-badge {
-  background: var(--gold-dim);
-  color: var(--gold);
-  font-size: 11px;
-  font-weight: 700;
-  padding: 3px 10px;
-  border: 1px solid var(--gold-dim);
+  background: var(--gold-dim); color: var(--gold);
+  font-size: 11px; font-weight: 700; padding: 3px 10px; border: 1px solid var(--gold-dim);
 }
-
 .adm-empty {
-  text-align: center;
-  padding: 60px 24px;
-  color: var(--text2);
-  opacity: 0.4;
-  font-size: 14px;
-  line-height: 1.8;
+  text-align: center; padding: 60px 24px; color: var(--text2);
+  opacity: 0.4; font-size: 14px; line-height: 1.8;
 }
 
+/* ── Ad / clip card ── */
 .ad-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  margin-bottom: 12px;
-  display: flex;
-  gap: 0;
-  overflow: hidden;
-  transition: border-color 0.2s;
+  background: var(--surface); border: 1px solid var(--border);
+  display: flex; margin-bottom: 12px; overflow: hidden;
+  transition: border-color 0.15s;
 }
 .ad-card:hover { border-color: rgba(200,168,75,0.35); }
-
 .ad-card-thumb {
-  width: 90px;
-  min-height: 90px;
-  background: var(--surface2);
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  position: relative;
+  width: 90px; flex-shrink: 0; background: var(--surface2);
+  position: relative; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
 }
-
-.ad-card-thumb img,
-.ad-card-thumb video {
-  width: 100%; height: 100%;
-  object-fit: cover;
+.ad-card-thumb img, .ad-card-thumb video {
+  width: 100%; height: 100%; object-fit: cover;
 }
-
-.ad-card-thumb .thumb-icon {
-  font-size: 28px;
-  opacity: 0.4;
-}
-
+.thumb-icon { font-size: 28px; opacity: 0.4; }
 .ad-card-type-badge {
-  position: absolute;
-  top: 5px; left: 5px;
-  font-size: 8px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  background: rgba(0,0,0,0.65);
-  color: var(--gold);
+  position: absolute; top: 6px; left: 6px;
+  background: rgba(0,0,0,0.75); color: var(--gold);
+  font-size: 8px; font-weight: 700; letter-spacing: 0.1em;
   padding: 2px 6px;
-  border: 1px solid var(--gold-dim);
 }
-
 .ad-card-body {
-  flex: 1;
-  padding: 12px 14px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  min-width: 0;
+  padding: 12px 14px; flex: 1; min-width: 0;
+  display: flex; flex-direction: column; gap: 4px; justify-content: center;
 }
-
-.ad-card-caption {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--text);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
+.ad-card-caption { font-size: 13px; font-weight: 700; color: var(--text); }
 .ad-card-src {
-  font-size: 11px;
-  color: var(--text2);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  opacity: 0.6;
+  font-size: 11px; color: var(--text2); white-space: nowrap;
+  overflow: hidden; text-overflow: ellipsis; opacity: 0.6;
 }
-
-.ad-card-link {
-  font-size: 11px;
-  color: var(--gold);
-  opacity: 0.7;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.ad-card-actions {
-  display: flex;
-  gap: 6px;
-  margin-top: 4px;
-}
-
+.ad-card-link { font-size: 11px; color: var(--blue); opacity: 0.8; }
+.ad-card-actions { display: flex; gap: 6px; margin-top: 4px; }
 .ad-drag-handle {
-  width: 28px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 14px;
-  color: var(--text2);
-  opacity: 0.3;
-  cursor: grab;
-  flex-shrink: 0;
-  background: var(--surface2);
-  border-left: 1px solid var(--border);
+  width: 28px; display: flex; align-items: center; justify-content: center;
+  font-size: 14px; color: var(--text2); opacity: 0.3; cursor: grab; flex-shrink: 0;
+  background: var(--surface2); border-left: 1px solid var(--border);
 }
 
 /* ── Toast ── */
 .adm-toast {
-  position: fixed;
-  bottom: 28px; right: 28px;
-  background: var(--green);
-  color: #fff;
-  font-size: 13px;
-  font-weight: 700;
-  padding: 12px 22px;
-  opacity: 0;
-  transform: translateY(10px);
-  transition: all 0.25s;
-  pointer-events: none;
-  z-index: 9999;
+  position: fixed; bottom: 28px; right: 28px;
+  background: var(--green); color: #fff;
+  font-size: 13px; font-weight: 700; padding: 12px 22px;
+  opacity: 0; transform: translateY(10px);
+  transition: all 0.25s; pointer-events: none; z-index: 9999;
 }
 .adm-toast.show { opacity: 1; transform: translateY(0); }
+
+/* ── info note ── */
+.adm-note {
+  background: rgba(75,168,232,0.07);
+  border: 1px solid rgba(75,168,232,0.2);
+  border-left: 3px solid var(--blue);
+  padding: 10px 14px;
+  font-size: 12px;
+  color: var(--text2);
+  line-height: 1.6;
+}
 
 @media (max-width: 900px) {
   .adm-layout { grid-template-columns: 1fr; }
@@ -427,22 +283,33 @@ body {
   </div>
 </div>
 
+<!-- Mode tabs -->
+<div class="adm-mode-bar">
+  <div class="adm-mode-tab active" id="tab-sidebar" onclick="switchMode('sidebar')">📌 Sidebar Ads</div>
+  <div class="adm-mode-tab" id="tab-gameplay" onclick="switchMode('gameplay')">🎮 Gameplay Videos</div>
+</div>
+
 <div class="adm-layout">
 
-  <!-- ── LEFT PANEL: Add New Ad ── -->
+  <!-- ── LEFT PANEL ── -->
   <div class="adm-panel">
     <div>
-      <div class="adm-section-title">Add New Ad</div>
+      <div class="adm-section-title" id="panel-title">Add New Sidebar Ad</div>
+    </div>
+
+    <!-- note shown only in gameplay mode -->
+    <div class="adm-note" id="gameplay-note" style="display:none;">
+      These videos appear in the <strong>Gameplay</strong> section on the wiki homepage. Add TikTok, YouTube, direct video, or image cards here.
     </div>
 
     <!-- Type selector -->
     <div class="adm-field">
-      <div class="adm-label">Ad Type</div>
+      <div class="adm-label">Content Type</div>
       <div class="type-tabs">
-        <div class="type-tab active" data-type="image" onclick="setType('image')">🖼 Image</div>
-        <div class="type-tab" data-type="video" onclick="setType('video')">🎬 Video</div>
-        <div class="type-tab" data-type="tiktok" onclick="setType('tiktok')">♪ TikTok</div>
-        <div class="type-tab" data-type="youtube" onclick="setType('youtube')">▶ YouTube</div>
+        <div class="type-tab active" data-type="image"   onclick="setType('image')">🖼 Image</div>
+        <div class="type-tab"        data-type="video"   onclick="setType('video')">🎬 Video</div>
+        <div class="type-tab"        data-type="tiktok"  onclick="setType('tiktok')">♪ TikTok</div>
+        <div class="type-tab"        data-type="youtube" onclick="setType('youtube')">▶ YouTube</div>
       </div>
     </div>
 
@@ -455,12 +322,12 @@ body {
 
     <!-- Caption -->
     <div class="adm-field">
-      <div class="adm-label">Caption <span style="opacity:0.4;font-weight:400;">(optional)</span></div>
-      <input class="adm-input" id="ad-caption" type="text" placeholder="e.g. Play Tribes of Malaya Now!">
+      <div class="adm-label">Caption / Label <span style="opacity:0.4;font-weight:400;">(optional)</span></div>
+      <input class="adm-input" id="ad-caption" type="text" placeholder="e.g. Gameplay #1 or Play Now!">
     </div>
 
-    <!-- Link -->
-    <div class="adm-field">
+    <!-- Link (sidebar only) -->
+    <div class="adm-field" id="link-field">
       <div class="adm-label">Click Link <span style="opacity:0.4;font-weight:400;">(optional)</span></div>
       <input class="adm-input" id="ad-link" type="url" placeholder="https://s1.tribesofmalaya.com/">
     </div>
@@ -474,21 +341,30 @@ body {
     </div>
 
     <!-- Add button -->
-    <button class="adm-btn adm-btn-primary" onclick="addAd()">＋ Add to Sidebar</button>
+    <button class="adm-btn adm-btn-primary" id="add-btn" onclick="addItem()">＋ Add to Sidebar</button>
   </div>
 
-  <!-- ── RIGHT PANEL: Manage Existing Ads ── -->
+  <!-- ── RIGHT PANEL ── -->
   <div class="adm-main">
-    <div class="adm-list-header">
-      <div class="adm-section-title" style="border:none;padding:0;margin:0;">Sidebar Ads</div>
-      <div class="adm-count-badge" id="ad-count-badge">0 ads</div>
+    <!-- Sidebar Ads list -->
+    <div id="view-sidebar">
+      <div class="adm-list-header">
+        <div class="adm-section-title" style="border:none;padding:0;margin:0;">Sidebar Ads</div>
+        <div class="adm-count-badge" id="ads-count-badge">0 ads</div>
+      </div>
+      <div id="ad-list">
+        <div class="adm-empty">📭 No ads yet.<br>Add your first ad using the form on the left.<br><span style="font-size:12px;opacity:0.6;">Ads appear in the sidebar on every wiki page.</span></div>
+      </div>
     </div>
 
-    <div id="ad-list">
-      <div class="adm-empty" id="adm-empty-msg">
-        📭 No ads yet.<br>
-        Add your first ad using the form on the left.<br>
-        <span style="font-size:12px;opacity:0.6;">Ads appear in the sidebar on every wiki page.</span>
+    <!-- Gameplay list -->
+    <div id="view-gameplay" style="display:none;">
+      <div class="adm-list-header">
+        <div class="adm-section-title" style="border:none;padding:0;margin:0;">Gameplay Videos</div>
+        <div class="adm-count-badge" id="gameplay-count-badge">0 clips</div>
+      </div>
+      <div id="gameplay-list">
+        <div class="adm-empty">🎮 No gameplay videos yet.<br>Add your first one using the form on the left.<br><span style="font-size:12px;opacity:0.6;">These appear in the Gameplay grid on the wiki homepage.</span></div>
       </div>
     </div>
   </div>
@@ -499,12 +375,35 @@ body {
 <div class="adm-toast" id="adm-toast"></div>
 
 <script>
-let currentType = 'image';
-let ads = [];
+var currentType = 'image';
+var currentMode = 'sidebar'; // 'sidebar' | 'gameplay'
+var ads      = [];
+var gameplay = [];
 
 // ── Init ──
-try { ads = JSON.parse(localStorage.getItem('tom_wiki_ads') || '[]'); } catch(e) { ads = []; }
-renderList();
+try { ads      = JSON.parse(localStorage.getItem('tom_wiki_ads')      || '[]'); } catch(e) { ads = []; }
+try { gameplay = JSON.parse(localStorage.getItem('tom_wiki_gameplay') || '[]'); } catch(e) { gameplay = []; }
+renderAds();
+renderGameplay();
+
+// ── Switch mode (Sidebar / Gameplay) ──
+function switchMode(mode) {
+  currentMode = mode;
+
+  document.getElementById('tab-sidebar').classList.toggle('active',  mode === 'sidebar');
+  document.getElementById('tab-gameplay').classList.toggle('active', mode === 'gameplay');
+
+  document.getElementById('view-sidebar').style.display  = mode === 'sidebar'  ? '' : 'none';
+  document.getElementById('view-gameplay').style.display = mode === 'gameplay' ? '' : 'none';
+
+  document.getElementById('gameplay-note').style.display = mode === 'gameplay' ? '' : 'none';
+  document.getElementById('link-field').style.display    = mode === 'sidebar'  ? '' : 'none';
+
+  document.getElementById('panel-title').textContent =
+    mode === 'sidebar' ? 'Add New Sidebar Ad' : 'Add New Gameplay Video';
+  document.getElementById('add-btn').textContent =
+    mode === 'sidebar' ? '＋ Add to Sidebar' : '＋ Add to Gameplay';
+}
 
 // ── Type switcher ──
 function setType(t) {
@@ -512,13 +411,13 @@ function setType(t) {
   document.querySelectorAll('.type-tab').forEach(function(el) {
     el.classList.toggle('active', el.dataset.type === t);
   });
-  const hints = {
+  var hints = {
     image:   'Paste a direct image URL (.jpg, .png, .gif, .webp)',
     video:   'Paste a direct video URL (.mp4, .webm) — will autoplay muted',
     tiktok:  'Paste the full TikTok video URL (tiktok.com/@user/video/ID)',
     youtube: 'Paste a YouTube video URL (youtube.com/watch?v=ID or youtu.be/ID)'
   };
-  const placeholders = {
+  var placeholders = {
     image:   'https://example.com/banner.jpg',
     video:   'https://example.com/clip.mp4',
     tiktok:  'https://www.tiktok.com/@user/video/1234567890',
@@ -531,8 +430,8 @@ function setType(t) {
 
 // ── Live preview ──
 function updatePreview() {
-  const src = document.getElementById('ad-src').value.trim();
-  const box = document.getElementById('ad-preview');
+  var src = document.getElementById('ad-src').value.trim();
+  var box = document.getElementById('ad-preview');
   if (!src) {
     box.innerHTML = '<div class="adm-preview-placeholder">Preview will appear here<br>after you enter a URL</div>';
     return;
@@ -542,109 +441,138 @@ function updatePreview() {
   } else if (currentType === 'video') {
     box.innerHTML = '<video src="' + src + '" autoplay muted loop playsinline></video>';
   } else if (currentType === 'tiktok') {
-    const id = src.replace(/.*\/video\/(\d+).*/, '$1');
+    var id = src.replace(/.*\/video\/(\d+).*/, '$1');
     box.innerHTML = id
       ? '<iframe src="https://www.tiktok.com/embed/v2/' + id + '" height="240" scrolling="no" allow="encrypted-media;"></iframe>'
       : '<div class="adm-preview-placeholder">Paste a TikTok video URL to preview</div>';
   } else if (currentType === 'youtube') {
-    const id = src.replace(/.*(?:youtu\.be\/|v=)([^&]+).*/, '$1');
+    var id = src.replace(/.*(?:youtu\.be\/|v=)([^&]+).*/, '$1');
     box.innerHTML = id
       ? '<iframe src="https://www.youtube.com/embed/' + id + '?autoplay=1&mute=1" height="200" allow="autoplay; encrypted-media" allowfullscreen></iframe>'
       : '<div class="adm-preview-placeholder">Paste a YouTube URL to preview</div>';
   }
 }
 
-// ── Add ad ──
-function addAd() {
-  const src     = document.getElementById('ad-src').value.trim();
-  const caption = document.getElementById('ad-caption').value.trim();
-  const link    = document.getElementById('ad-link').value.trim();
+// ── Add item ──
+function addItem() {
+  var src     = document.getElementById('ad-src').value.trim();
+  var caption = document.getElementById('ad-caption').value.trim();
+  var link    = document.getElementById('ad-link').value.trim();
   if (!src) { showToast('Please enter a source URL.', '#d95f5f'); return; }
-  ads.push({ id: Date.now(), type: currentType, src, caption, link });
-  save();
-  renderList();
+
+  var item = { id: Date.now(), type: currentType, src: src, caption: caption };
+
+  if (currentMode === 'sidebar') {
+    item.link = link;
+    ads.push(item);
+    localStorage.setItem('tom_wiki_ads', JSON.stringify(ads));
+    renderAds();
+    showToast('✓ Ad added to sidebar!');
+  } else {
+    gameplay.push(item);
+    localStorage.setItem('tom_wiki_gameplay', JSON.stringify(gameplay));
+    renderGameplay();
+    showToast('✓ Clip added to Gameplay!');
+  }
+
   // reset form
   document.getElementById('ad-src').value = '';
   document.getElementById('ad-caption').value = '';
   document.getElementById('ad-link').value = '';
-  document.getElementById('ad-preview').innerHTML = '<div class="adm-preview-placeholder">Preview will appear here<br>after you enter a URL</div>';
-  showToast('✓ Ad added to sidebar!');
+  document.getElementById('ad-preview').innerHTML =
+    '<div class="adm-preview-placeholder">Preview will appear here<br>after you enter a URL</div>';
 }
 
-// ── Delete ad ──
+// ── Delete ──
 function deleteAd(id) {
   ads = ads.filter(function(a) { return a.id !== id; });
-  save();
-  renderList();
+  localStorage.setItem('tom_wiki_ads', JSON.stringify(ads));
+  renderAds();
   showToast('Ad removed.', '#d95f5f');
 }
-
-// ── Move ad up/down ──
-function moveAd(id, dir) {
-  const idx = ads.findIndex(function(a) { return a.id === id; });
-  const newIdx = idx + dir;
-  if (newIdx < 0 || newIdx >= ads.length) return;
-  const tmp = ads[idx]; ads[idx] = ads[newIdx]; ads[newIdx] = tmp;
-  save();
-  renderList();
+function deleteClip(id) {
+  gameplay = gameplay.filter(function(a) { return a.id !== id; });
+  localStorage.setItem('tom_wiki_gameplay', JSON.stringify(gameplay));
+  renderGameplay();
+  showToast('Clip removed.', '#d95f5f');
 }
 
-// ── Save ──
-function save() {
-  localStorage.setItem('tom_wiki_ads', JSON.stringify(ads));
+// ── Move ──
+function moveItem(arr, id, dir, storageKey, renderFn) {
+  var idx = arr.findIndex(function(a) { return a.id === id; });
+  var newIdx = idx + dir;
+  if (newIdx < 0 || newIdx >= arr.length) return;
+  var tmp = arr[idx]; arr[idx] = arr[newIdx]; arr[newIdx] = tmp;
+  localStorage.setItem(storageKey, JSON.stringify(arr));
+  renderFn();
 }
+function moveAd(id, dir)   { moveItem(ads,      id, dir, 'tom_wiki_ads',      renderAds); }
+function moveClip(id, dir) { moveItem(gameplay, id, dir, 'tom_wiki_gameplay', renderGameplay); }
 
-// ── Render list ──
-function renderList() {
-  const list = document.getElementById('ad-list');
-  const badge = document.getElementById('ad-count-badge');
-  badge.textContent = ads.length + ' ad' + (ads.length !== 1 ? 's' : '');
+// ── Render helpers ──
+function buildCard(item, i, total, onDelete, onMove) {
+  var card = document.createElement('div');
+  card.className = 'ad-card';
 
-  if (!ads.length) {
-    list.innerHTML = '<div class="adm-empty" id="adm-empty-msg">📭 No ads yet.<br>Add your first ad using the form on the left.<br><span style="font-size:12px;opacity:0.6;">Ads appear in the sidebar on every wiki page.</span></div>';
-    return;
+  var typeIcons = { image: '🖼', video: '🎬', tiktok: '♪', youtube: '▶' };
+  var thumbHTML = '';
+  if (item.type === 'image') {
+    thumbHTML = '<img src="' + item.src + '" alt="thumb" onerror="this.style.opacity=\'0.1\'">';
+  } else if (item.type === 'video') {
+    thumbHTML = '<video src="' + item.src + '" muted playsinline style="pointer-events:none;"></video>';
+  } else {
+    thumbHTML = '<div class="thumb-icon">' + typeIcons[item.type] + '</div>';
   }
 
+  card.innerHTML =
+    '<div class="ad-card-thumb">'
+      + thumbHTML
+      + '<div class="ad-card-type-badge">' + (item.type||'').toUpperCase() + '</div>'
+    + '</div>'
+    + '<div class="ad-card-body">'
+      + '<div class="ad-card-caption">' + (item.caption || '(No caption)') + '</div>'
+      + '<div class="ad-card-src">' + item.src + '</div>'
+      + (item.link ? '<div class="ad-card-link">↗ ' + item.link + '</div>' : '')
+      + '<div class="ad-card-actions">'
+        + '<button class="adm-btn adm-btn-ghost" onclick="' + onMove + '(' + item.id + ',-1)"' + (i===0?' disabled style="opacity:0.3;"':'') + '>↑</button>'
+        + '<button class="adm-btn adm-btn-ghost" onclick="' + onMove + '(' + item.id + ',1)"'  + (i===total-1?' disabled style="opacity:0.3;"':'') + '>↓</button>'
+        + '<button class="adm-btn adm-btn-danger" onclick="' + onDelete + '(' + item.id + ')">✕ Remove</button>'
+      + '</div>'
+    + '</div>'
+    + '<div class="ad-drag-handle">⠿</div>';
+
+  return card;
+}
+
+function renderAds() {
+  var list = document.getElementById('ad-list');
+  document.getElementById('ads-count-badge').textContent = ads.length + ' ad' + (ads.length !== 1 ? 's' : '');
+  if (!ads.length) {
+    list.innerHTML = '<div class="adm-empty">📭 No ads yet.<br>Add your first ad using the form on the left.<br><span style="font-size:12px;opacity:0.6;">Ads appear in the sidebar on every wiki page.</span></div>';
+    return;
+  }
   list.innerHTML = '';
   ads.forEach(function(ad, i) {
-    const card = document.createElement('div');
-    card.className = 'ad-card';
+    list.appendChild(buildCard(ad, i, ads.length, 'deleteAd', 'moveAd'));
+  });
+}
 
-    const typeIcons = { image: '🖼', video: '🎬', tiktok: '♪', youtube: '▶' };
-
-    let thumbHTML = '';
-    if (ad.type === 'image') {
-      thumbHTML = '<img src="' + ad.src + '" alt="thumb" onerror="this.style.opacity=\'0.1\'">';
-    } else if (ad.type === 'video') {
-      thumbHTML = '<video src="' + ad.src + '" muted playsinline style="pointer-events:none;"></video>';
-    } else {
-      thumbHTML = '<div class="thumb-icon">' + typeIcons[ad.type] + '</div>';
-    }
-
-    card.innerHTML =
-      '<div class="ad-card-thumb">' +
-        thumbHTML +
-        '<div class="ad-card-type-badge">' + (ad.type||'').toUpperCase() + '</div>' +
-      '</div>' +
-      '<div class="ad-card-body">' +
-        '<div class="ad-card-caption">' + (ad.caption || '(No caption)') + '</div>' +
-        '<div class="ad-card-src">' + ad.src + '</div>' +
-        (ad.link ? '<div class="ad-card-link">↗ ' + ad.link + '</div>' : '') +
-        '<div class="ad-card-actions">' +
-          '<button class="adm-btn adm-btn-ghost" onclick="moveAd(' + ad.id + ',-1)"' + (i===0?' disabled style="opacity:0.3;"':'') + '>↑</button>' +
-          '<button class="adm-btn adm-btn-ghost" onclick="moveAd(' + ad.id + ',1)"' + (i===ads.length-1?' disabled style="opacity:0.3;"':'') + '>↓</button>' +
-          '<button class="adm-btn adm-btn-danger" onclick="deleteAd(' + ad.id + ')">✕ Remove</button>' +
-        '</div>' +
-      '</div>' +
-      '<div class="ad-drag-handle">⠿</div>';
-
-    list.appendChild(card);
+function renderGameplay() {
+  var list = document.getElementById('gameplay-list');
+  document.getElementById('gameplay-count-badge').textContent = gameplay.length + ' clip' + (gameplay.length !== 1 ? 's' : '');
+  if (!gameplay.length) {
+    list.innerHTML = '<div class="adm-empty">🎮 No gameplay videos yet.<br>Add your first one using the form on the left.<br><span style="font-size:12px;opacity:0.6;">These appear in the Gameplay grid on the wiki homepage.</span></div>';
+    return;
+  }
+  list.innerHTML = '';
+  gameplay.forEach(function(clip, i) {
+    list.appendChild(buildCard(clip, i, gameplay.length, 'deleteClip', 'moveClip'));
   });
 }
 
 // ── Toast ──
 function showToast(msg, color) {
-  const t = document.getElementById('adm-toast');
+  var t = document.getElementById('adm-toast');
   t.textContent = msg;
   t.style.background = color || '#5fba7d';
   t.classList.add('show');
