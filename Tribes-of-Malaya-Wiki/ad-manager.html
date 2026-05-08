@@ -442,9 +442,37 @@ function updatePreview() {
     box.innerHTML = '<video src="' + src + '" autoplay muted loop playsinline></video>';
   } else if (currentType === 'tiktok') {
     var id = src.replace(/.*\/video\/(\d+).*/, '$1');
-    box.innerHTML = id
-      ? '<iframe src="https://www.tiktok.com/embed/v2/' + id + '" height="240" scrolling="no" allow="encrypted-media;"></iframe>'
-      : '<div class="adm-preview-placeholder">Paste a TikTok video URL to preview</div>';
+    if (!id || id === src) {
+      box.innerHTML = '<div class="adm-preview-placeholder">Paste a TikTok video URL to preview</div>';
+    } else {
+      box.innerHTML = '<div style="width:100%;display:flex;flex-direction:column;align-items:center;gap:8px;padding:12px;">'
+        + '<div id="tt-prev-wrap" style="position:relative;width:100%;max-width:320px;background:#000;border-radius:4px;overflow:hidden;">'
+        + '<img id="tt-prev-img" src="" alt="TikTok thumbnail" style="width:100%;display:block;object-fit:cover;min-height:120px;" onerror="document.getElementById(\'tt-prev-fallback\').style.display=\'flex\';this.style.display=\'none\'">'
+        + '<div id="tt-prev-fallback" style="display:none;align-items:center;justify-content:center;height:160px;font-size:36px;opacity:0.4;">♪</div>'
+        + '<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;">'
+        + '<div style="background:rgba(0,0,0,0.55);border-radius:50%;width:44px;height:44px;display:flex;align-items:center;justify-content:center;font-size:20px;">▶</div>'
+        + '</div>'
+        + '</div>'
+        + '<div style="font-size:11px;color:var(--text2);opacity:0.6;">TikTok · <a href="' + src + '" target="_blank" style="color:var(--gold);text-decoration:none;">Open ↗</a></div>'
+        + '</div>';
+      fetch('https://noembed.com/embed?url=https://www.tiktok.com/@x/video/' + id)
+        .then(function(r){ return r.json(); })
+        .then(function(d){
+          var img = document.getElementById('tt-prev-img');
+          var fb  = document.getElementById('tt-prev-fallback');
+          if (img && d && d.thumbnail_url) {
+            img.src = d.thumbnail_url;
+          } else if (fb) {
+            fb.style.display = 'flex';
+            if (img) img.style.display = 'none';
+          }
+        }).catch(function(){
+          var fb = document.getElementById('tt-prev-fallback');
+          var img = document.getElementById('tt-prev-img');
+          if (fb) fb.style.display = 'flex';
+          if (img) img.style.display = 'none';
+        });
+    }
   } else if (currentType === 'youtube') {
     var id = src.replace(/.*(?:youtu\.be\/|v=)([^&]+).*/, '$1');
     box.innerHTML = id
